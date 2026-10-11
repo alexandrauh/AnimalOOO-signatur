@@ -259,7 +259,7 @@ function signatureHtml(d) {
     rows.push(`<tr><td style="padding:0 0 20px 0;"><div data-pick-photo="1" title="Lägg till foto" style="width:${PHOTO}px; height:${PHOTO}px; box-sizing:border-box; border-radius:50%; border:${RING}px solid ${CERISE}; display:flex; align-items:center; justify-content:center; text-align:center; cursor:pointer; font-family:${FONT}; font-size:11px; line-height:1.2; font-weight:600; color:${BROWN};">Lägg till<br>foto</div></td></tr>`);
   }
   rows.push(`<tr><td style="padding:0; ${text(24, 30, 700, INK)} letter-spacing:-0.01em;">${esc(d.name)}</td></tr>`);
-  rows.push(`<tr><td style="padding:0 0 16px 0; ${text(14, 20, 600, CERISE)}">${esc(d.title)}</td></tr>`);
+  rows.push(`<tr><td style="padding:0 0 16px 0; ${text(14, 20, 500, CERISE)}">${esc(d.title)}</td></tr>`);
   const contacts = [];
   if (d.phone) contacts.push(contact('icon-phone-v3.png', 'Telefon', 'tel:' + telNumber(d.phone), d.phone));
   contacts.push(contact('icon-mail-v3.png', 'E-post', 'mailto:' + d.email, d.email));
