@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/animalooo-design-system-73413bdc-891b-4297-9fc2-6ac0bf0fe021/fonts/fonts.css">
+<link rel="stylesheet" href="_ds/animalooo-design-system-73413bdc-891b-4297-9fc2-6ac0bf0fe021/tokens/colors.css">
+<link rel="stylesheet" href="_ds/animalooo-design-system-73413bdc-891b-4297-9fc2-6ac0bf0fe021/tokens/typography.css">
+<link rel="stylesheet" href="_ds/animalooo-design-system-73413bdc-891b-4297-9fc2-6ac0bf0fe021/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/animalooo-design-system-73413bdc-891b-4297-9fc2-6ac0bf0fe021/tokens/fig-tokens.css">
+<link rel="stylesheet" href="_ds/animalooo-design-system-73413bdc-891b-4297-9fc2-6ac0bf0fe021/tokens/fig-typography.css">
+<link rel="stylesheet" href="_ds/animalooo-design-system-73413bdc-891b-4297-9fc2-6ac0bf0fe021/styles.css">
+<script src="_ds/animalooo-design-system-73413bdc-891b-4297-9fc2-6ac0bf0fe021/_ds_bundle.js"></script>
+<style>
+body { margin: 0; background: #FBF8F7; }
+a { color: #A82F6D; }
+a:hover { color: #141414; }
+</style>
+</helmet>
+<div lang="sv" style="min-height: 100vh; background: #FBF8F7; color: #141414; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-weight: 500;">
+<div style="max-width: 1320px; margin: 0 auto; padding: 40px clamp(20px, 5vw, 64px) 96px; box-sizing: border-box;">
+
+<x-import component-from-global-scope="AnimalOOODesignSystem_73413b.Header" breadcrumb="Animal.OOO / E-postsignatur" dc-props="{{ headerProps }}" hint-size="100%,48px"></x-import>
+
+<sc-if value="{{ needsHost }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top: 32px; background: #F1E7E3; padding: 16px 20px; font-size: 15px; line-height: 1.5; text-wrap: pretty;"><strong style="font-weight: 700;">Innan du delar sidan:</strong> ladda upp mappen email-assets till er webbplats och skriv in dess webbadress under Tweaks (imageHost). Tills dess syns inte logotypen, djuren och ikonerna för dem som får dina mejl.</div>
+</sc-if>
+
+<div style="margin-top: 64px; max-width: 640px;">
+<h1 style="margin: 0; font-size: 40px; line-height: 1.2; font-weight: 600; letter-spacing: -0.01em;">Din e-postsignatur</h1>
+<p style="margin: 12px 0 0; font-size: 18px; line-height: 1.5; font-weight: 500; color: #7E5E53; text-wrap: pretty;">Fyll i dina uppgifter, kopiera signaturen och klistra in den i ditt e-postprogram. Sedan kan du själv ändra texten när du vill, direkt i e-postinställningarna.</p>
+</div>
+
+<div ref="{{ mainRef }}" style="margin-top: 56px; display: flex; flex-wrap: wrap-reverse; gap: 56px 64px; align-items: flex-end;">
+
+<div ref="{{ formColRef }}" style="flex: 1 1 340px; max-width: 440px; display: flex; flex-direction: column; gap: 56px;">
+
+<section style="display: flex; flex-direction: column; gap: 24px;">
+<div style="display: flex; align-items: baseline; gap: 12px;">
+<span style="font-size: 24px; line-height: 1.2; font-weight: 400; color: #CD3A85;">01</span>
+<h2 style="margin: 0; font-size: 24px; line-height: 1.2; font-weight: 600; letter-spacing: -0.01em;">Dina uppgifter</h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 20px;">
+<label style="display: flex; flex-direction: column; gap: 8px;">
+<span style="font-size: 15px; line-height: 1.2; font-weight: 600;">Namn</span>
+<input value="{{ name }}" onChange="{{ onName }}" placeholder="Anna Lindqvist" style="width: 100%; height: 48px; box-sizing: border-box; padding: 0 14px; font-family: inherit; font-size: 16px; font-weight: 500; color: #141414; background: #FFFFFF; border: 1px solid #C6ADA4; border-radius: 0; outline: none;" style-focus="border-color: #CD3A85; outline: 1px solid #CD3A85; outline-offset: -2px;">
+</label>
+<label style="display: flex; flex-direction: column; gap: 8px;">
+<span style="font-size: 15px; line-height: 1.2; font-weight: 600;">Titel</span>
+<input value="{{ title }}" onChange="{{ onTitle }}" placeholder="Avelsgenetiker" style="width: 100%; height: 48px; box-sizing: border-box; padding: 0 14px; font-family: inherit; font-size: 16px; font-weight: 500; color: #141414; background: #FFFFFF; border: 1px solid #C6ADA4; border-radius: 0; outline: none;" style-focus="border-color: #CD3A85; outline: 1px solid #CD3A85; outline-offset: -2px;">
+</label>
+<label style="display: flex; flex-direction: column; gap: 8px;">
+<span style="font-size: 15px; line-height: 1.2; font-weight: 600;">Telefon <span style="font-weight: 500; color: #7E5E53;">(valfritt)</span></span>
+<input value="{{ phone }}" onChange="{{ onPhone }}" placeholder="+46 70 123 45 67" inputmode="tel" style="width: 100%; height: 48px; box-sizing: border-box; padding: 0 14px; font-family: inherit; font-size: 16px; font-weight: 500; color: #141414; background: #FFFFFF; border: 1px solid #C6ADA4; border-radius: 0; outline: none;" style-focus="border-color: #CD3A85; outline: 1px solid #CD3A85; outline-offset: -2px;">
+</label>
+<label style="display: flex; flex-direction: column; gap: 8px;">
+<span style="font-size: 15px; line-height: 1.2; font-weight: 600;">E-post</span>
+<input value="{{ email }}" onChange="{{ onEmail }}" placeholder="anna.lindqvist@animal.ooo" type="email" style="width: 100%; height: 48px; box-sizing: border-box; padding: 0 14px; font-family: inherit; font-size: 16px; font-weight: 500; color: #141414; background: #FFFFFF; border: 1px solid #C6ADA4; border-radius: 0; outline: none;" style-focus="border-color: #CD3A85; outline: 1px solid #CD3A85; outline-offset: -2px;">
+</label>
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<span style="font-size: 15px; line-height: 1.2; font-weight: 600;">Webbplats</span>
+<div style="min-height: 48px; box-sizing: border-box; padding: 12px 14px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 12px; background: #F1E7E3; font-size: 16px; line-height: 1.5;">
+<span>{{ website }}</span>
+<span style="font-size: 14px; color: #7E5E53;">Samma för alla</span>
+</div>
+</div>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 24px;">
+<div style="display: flex; align-items: baseline; gap: 12px;">
+<span style="font-size: 24px; line-height: 1.2; font-weight: 400; color: #CD3A85;">02</span>
+<h2 style="margin: 0; font-size: 24px; line-height: 1.2; font-weight: 600; letter-spacing: -0.01em;">Profilbild</h2>
+</div>
+<div role="group" aria-label="Profilbild" style="display: flex; border: 1px solid #141414;">
+<button type="button" onClick="{{ choosePhoto }}" aria-pressed="{{ withPhoto }}" style="flex: 1; height: 44px; border: 0; border-radius: 0; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; background: {{ photoOnBg }}; color: {{ photoOnFg }};">Med foto</button>
+<button type="button" onClick="{{ chooseNoPhoto }}" aria-pressed="{{ withoutPhoto }}" style="flex: 1; height: 44px; border: 0; border-left: 1px solid #141414; border-radius: 0; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; background: {{ photoOffBg }}; color: {{ photoOffFg }};">Utan foto</button>
+</div>
+<sc-if value="{{ withPhoto }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; align-items: center; gap: 20px;">
+<sc-if value="{{ hasPhoto }}" hint-placeholder-val="{{ false }}">
+<img ref="{{ photoRef }}" data-photo-thumb="1" alt="Ditt foto" width="72" height="72" style="display: block; width: 72px; height: 72px; flex-shrink: 0;">
+</sc-if>
+<sc-if value="{{ noPhotoYet }}" hint-placeholder-val="{{ true }}">
+<div style="width: 72px; height: 72px; flex-shrink: 0; box-sizing: border-box; border-radius: 50%; border: 6px solid #CD3A85; background: #F1E7E3;"></div>
+</sc-if>
+<div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px;">
+<button type="button" onClick="{{ pickPhoto }}" style="height: 44px; padding: 0 18px; background: #FFFFFF; color: #141414; border: 1px solid #141414; border-radius: 0; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer;" style-hover="background: #F1E7E3;">{{ uploadLabel }}</button>
+<sc-if value="{{ hasPhoto }}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{ removePhoto }}" style="padding: 0; background: none; border: 0; font-family: inherit; font-size: 15px; font-weight: 600; color: #A82F6D; text-decoration: underline; text-underline-offset: 3px; cursor: pointer;" style-hover="color: #141414;">Ta bort</button>
+</sc-if>
+</div>
+<span style="font-size: 14px; line-height: 1.45; color: #7E5E53; text-wrap: pretty;">Ett tydligt foto av ansiktet blir bäst. Det beskärs till en cirkel åt dig.</span>
+</div>
+</div>
+</sc-if>
+<input type="file" accept="image/*" ref="{{ fileRef }}" onChange="{{ onFile }}" style="display: none;">
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 24px;">
+<div style="display: flex; align-items: baseline; gap: 12px;">
+<span style="font-size: 24px; line-height: 1.2; font-weight: 400; color: #CD3A85;">03</span>
+<h2 style="margin: 0; font-size: 24px; line-height: 1.2; font-weight: 600; letter-spacing: -0.01em;">Lägg in den i din e-post</h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<span style="font-size: 15px; line-height: 1.2; font-weight: 600;">Vilket e-postprogram använder du?</span>
+<div role="group" aria-label="E-postprogram" style="display: flex; border: 1px solid #141414;">
+<button type="button" onClick="{{ pickGmail }}" aria-pressed="{{ isGmail }}" style="flex: 1; height: 44px; padding: 0 8px; border: 0; border-radius: 0; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; background: {{ gmailBg }}; color: {{ gmailFg }};">Gmail</button>
+<button type="button" onClick="{{ pickOutlook }}" aria-pressed="{{ isOutlook }}" style="flex: 1; height: 44px; padding: 0 8px; border: 0; border-left: 1px solid #141414; border-radius: 0; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; background: {{ outlookBg }}; color: {{ outlookFg }};">Outlook</button>
+<button type="button" onClick="{{ pickApple }}" aria-pressed="{{ isApple }}" style="flex: 1; height: 44px; padding: 0 8px; border: 0; border-left: 1px solid #141414; border-radius: 0; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; background: {{ appleBg }}; color: {{ appleFg }};">Apple Mail</button>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 12px;">
+<button type="button" onClick="{{ copySignature }}" style="display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 24px; background: #CD3A85; color: #FFFCFC; border: 0; border-radius: 0; font-family: inherit; font-size: 16px; font-weight: 600; cursor: pointer;" style-hover="background: #A82F6D;" style-active="background: #A82F6D;">
+<x-import component-from-global-scope="AnimalOOODesignSystem_73413b.Icon" name="{{ copyIcon }}" size="{{ 20 }}" color="#FFFCFC" hint-size="20px,20px"></x-import>
+<span>{{ copyLabel }}</span>
+</button>
+<p role="status" style="margin: 0; min-height: 24px; font-size: 15px; line-height: 1.5; font-weight: 600; color: {{ statusColor }}; text-wrap: pretty;">{{ status }}</p>
+</div>
+
+<sc-if value="{{ isGmail }}" hint-placeholder-val="{{ true }}">
+<ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px;">
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">1</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Klicka på kugghjulet i Gmail och sedan på <strong style="font-weight: 700;">Visa alla inställningar</strong>.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">2</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Scrolla ner till <strong style="font-weight: 700;">Signatur</strong> på fliken Allmänt och klicka på <strong style="font-weight: 700;">Skapa ny</strong>. Ge den valfritt namn.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">3</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Klicka i signaturrutan och klistra in: Ctrl + V, eller Cmd + V på Mac.</span></li>
+<sc-if value="{{ withPhoto }}" hint-placeholder-val="{{ true }}">
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">4</span><span style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 6px;"><span style="text-wrap: pretty;">Gmail tar inte med foton som klistras in, så lägg till ditt för hand: klicka på cirkeln <strong style="font-weight: 700;">Ditt foto</strong> och tryck Delete. Klicka sedan på ikonen Infoga bild, välj <strong style="font-weight: 700;">Ladda upp</strong> och välj ditt foto.</span><button type="button" onClick="{{ downloadPhoto }}" style="padding: 0; background: none; border: 0; font-family: inherit; font-size: 15px; font-weight: 600; color: #A82F6D; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; text-align: left;" style-hover="color: #141414;">Ladda ner ditt foto i rätt storlek</button></span></li>
+</sc-if>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">{{ gmailLastNum }}</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Välj längre ner att signaturen ska användas för nya mejl och för svar. Klicka på <strong style="font-weight: 700;">Spara ändringar</strong> längst ner på sidan.</span></li>
+</ol>
+</sc-if>
+
+<sc-if value="{{ isOutlook }}" hint-placeholder-val="{{ false }}">
+<ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px;">
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">1</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Öppna <strong style="font-weight: 700;">Inställningar</strong> i Outlook, sedan <strong style="font-weight: 700;">Konton</strong> och <strong style="font-weight: 700;">Signaturer</strong>. I klassiska Outlook: Arkiv, Alternativ, E-post, Signaturer.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">2</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Klicka på <strong style="font-weight: 700;">Ny signatur</strong> och ge den valfritt namn.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">3</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Klicka i signaturrutan och klistra in: Ctrl + V, eller Cmd + V på Mac.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">4</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Välj längst ner att den ska användas för nya meddelanden och svar. Klicka sedan på <strong style="font-weight: 700;">Spara</strong>.</span></li>
+</ol>
+</sc-if>
+
+<sc-if value="{{ isApple }}" hint-placeholder-val="{{ false }}">
+<ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px;">
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">1</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Välj <strong style="font-weight: 700;">Mail</strong>, <strong style="font-weight: 700;">Inställningar</strong> i menyraden och klicka på <strong style="font-weight: 700;">Signaturer</strong>.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">2</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Markera ditt konto i vänsterkolumnen och klicka på plustecknet under kolumnen i mitten.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">3</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Avmarkera kryssrutan som gör att signaturen alltid får ditt standardtypsnitt.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">4</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Klicka i signaturrutan till höger och klistra in med Cmd + V. Den sparas automatiskt.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">5</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Välj den i menyn <strong style="font-weight: 700;">Välj signatur</strong> längst ner.</span></li>
+</ol>
+</sc-if>
+
+<div style="background: #F1E7E3; padding: 20px 24px; display: flex; flex-direction: column; gap: 6px;">
+<span style="font-size: 16px; line-height: 1.5; font-weight: 700;">Ändra dina uppgifter senare</span>
+<span style="font-size: 15px; line-height: 1.5; text-wrap: pretty;">Öppna samma signaturinställningar och ändra texten där, precis som i ett vanligt dokument. Layout och bilder ligger kvar.</span>
+</div>
+
+<div style="font-size: 14px; line-height: 1.5; color: #7E5E53; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px;">
+<span>Ska du lägga in signaturen åt alla, eller använder du ett annat e-postprogram?</span>
+<button type="button" onClick="{{ copyCode }}" style="padding: 0; background: none; border: 0; font-family: inherit; font-size: 14px; font-weight: 600; color: #A82F6D; text-decoration: underline; text-underline-offset: 3px; cursor: pointer;" style-hover="color: #141414;">Kopiera HTML-koden</button>
+</div>
+</section>
+</div>
+
+<div ref="{{ previewColRef }}" style="flex: 1.4 1 480px; min-width: 0; position: {{ previewPos }}; top: 24px; display: flex; flex-direction: column; gap: 12px;">
+<div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px 16px;">
+<span style="font-size: 15px; line-height: 1.2; font-weight: 600;">Förhandsvisning</span>
+<span style="font-size: 14px; line-height: 1.2; color: #7E5E53;">Verklig storlek</span>
+</div>
+<div style="background: #FFFFFF; padding: 48px clamp(20px, 4vw, 48px); overflow-x: auto;">
+<table ref="{{ sigRef }}" style="border-collapse: collapse; border-spacing: 0; width: 560px; font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif; color: #141414;">
+<tbody>
+<tr>
+<td style="padding: 0 28px 0 0; width: 268px; vertical-align: middle;">
+<sc-if value="{{ withPhoto }}" hint-placeholder-val="{{ true }}">
+<div data-sig-photo-cell="1">
+<sc-if value="{{ hasPhoto }}" hint-placeholder-val="{{ false }}">
+<img ref="{{ photoRef }}" data-sig-photo-img="1" width="80" height="80" alt="{{ displayName }}" style="display: block; width: 80px; height: 80px; border: 0;">
+</sc-if>
+<sc-if value="{{ noPhotoYet }}" hint-placeholder-val="{{ true }}">
+<div data-sig-ui="1" onClick="{{ pickPhoto }}" style="width: 80px; height: 80px; box-sizing: border-box; border-radius: 50%; border: 6px solid #CD3A85; background: #F1E7E3; display: flex; align-items: center; justify-content: center; text-align: center; cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; line-height: 1.2; font-weight: 600; color: #7E5E53;" style-hover="background: #E9DAD4;">Lägg till<br>foto</div>
+</sc-if>
+<div style="font-size: 20px; line-height: 20px; height: 20px;">&nbsp;</div>
+</div>
+</sc-if>
+<div style="font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif; font-size: 24px; line-height: 30px; font-weight: bold; letter-spacing: -0.01em; color: #141414;">{{ displayName }}</div>
+<div style="font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif; font-size: 14px; line-height: 20px; font-weight: 600; color: #CD3A85;">{{ displayTitle }}</div>
+<div style="font-size: 16px; line-height: 16px; height: 16px;">&nbsp;</div>
+<table style="border-collapse: collapse; border-spacing: 0;">
+<tbody>
+<tr data-sig-phone-row="1" style="display: {{ phoneRowDisplay }};">
+<td style="padding: 4px 0 0 0; width: 22px; vertical-align: top; font-size: 0; line-height: 14px;"><img src="email-assets/icon-phone.png" data-sig-asset="icon-phone.png" width="14" height="14" alt="Telefon" style="display: block; width: 14px; height: 14px; border: 0; color: #CD3A85; font-family: Arial, Helvetica, sans-serif; font-size: 10px;"></td>
+<td style="padding: 0; vertical-align: top; font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif; font-size: 13px; line-height: 21px; font-weight: 500; color: #141414;"><a href="{{ telHref }}" style="color: #141414; text-decoration: none;">{{ displayPhone }}</a></td>
+</tr>
+<tr>
+<td style="padding: 4px 0 0 0; width: 22px; vertical-align: top; font-size: 0; line-height: 14px;"><img src="email-assets/icon-mail.png" data-sig-asset="icon-mail.png" width="14" height="14" alt="E-post" style="display: block; width: 14px; height: 14px; border: 0; color: #CD3A85; font-family: Arial, Helvetica, sans-serif; font-size: 10px;"></td>
+<td style="padding: 0; vertical-align: top; font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif; font-size: 13px; line-height: 21px; font-weight: 500; color: #141414;"><a href="{{ mailHref }}" style="color: #141414; text-decoration: none;">{{ displayEmail }}</a></td>
+</tr>
+<tr>
+<td style="padding: 4px 0 0 0; width: 22px; vertical-align: top; font-size: 0; line-height: 14px;"><img src="email-assets/icon-web.png" data-sig-asset="icon-web.png" width="14" height="14" alt="Webb" style="display: block; width: 14px; height: 14px; border: 0; color: #CD3A85; font-family: Arial, Helvetica, sans-serif; font-size: 10px;"></td>
+<td style="padding: 0; vertical-align: top; font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif; font-size: 13px; line-height: 21px; font-weight: 500; color: #141414;"><a href="{{ siteHref }}" style="color: #141414; text-decoration: none;">{{ website }}</a></td>
+</tr>
+</tbody>
+</table>
+</td>
+<td style="padding: 0; width: 264px; height: 232px; vertical-align: bottom; background-color: #CD3A85;"><table style="border-collapse: collapse; border-spacing: 0; width: 264px;"><tbody><tr><td style="padding: 24px;"><a href="{{ siteHref }}" style="text-decoration: none;"><img src="email-assets/lockup-white.png" data-sig-asset="lockup-white.png" width="216" height="95" alt="AnimalOOO" style="display: block; width: 216px; height: 95px; border: 0; color: #FFFCFC; font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold;"></a></td></tr></tbody></table></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="margin: 4px 0 0; font-size: 14px; line-height: 1.5; color: #7E5E53; text-wrap: pretty;">Texten är satt i Plus Jakarta Sans. Mottagare som inte har typsnittet ser Arial i stället. Logotypen med djuren är en bild.</p>
+</div>
+
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;website&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;animal.ooo&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;imageHost&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;defaultApp&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;Gmail&quot;, &quot;Outlook&quot;, &quot;Apple Mail&quot;], &quot;default&quot;: &quot;Gmail&quot;, &quot;tsType&quot;: &quot;string&quot;}}">
+const SAMPLE = { name: 'Anna Lindqvist', title: 'Avelsgenetiker', phone: '+46 70 123 45 67', email: 'anna.lindqvist@animal.ooo' };
+const KEY = 'animalooo-signatur-v4';
+const OLD_SAMPLE = { name: 'Anna Lindqvist', title: 'Breeding geneticist', phone: '+46 70 123 45 67', email: 'anna.lindqvist@animal.ooo' };
+const SAVED = ['name', 'title', 'phone', 'email', 'photoMode', 'photo', 'app'];
+const APPS = { 'Gmail': 'gmail', 'Outlook': 'outlook', 'Apple Mail': 'apple' };
+const INK = '#141414', SNOW = '#FFFCFC', WHITE = '#FFFFFF', CERISE = '#CD3A85';
+const PHOTO = 80, RING = 6;
+
+class Component extends DCLogic {
+  state = { name: '', title: '', phone: '', email: '', photoMode: 'with', photo: null, ringed: null, app: null, status: '', statusKind: 'ok', copied: false, stacked: false };
+  sigRef = React.createRef();
+  fileRef = React.createRef();
+  mainRef = React.createRef();
+  formColRef = React.createRef();
+  previewColRef = React.createRef();
+
+  photoRef = (el) => {
+    const p = this.state.ringed;
+    if (el && p && el.getAttribute('src') !== p) el.setAttribute('src', p);
+  };
+
+  checkStacked = () => {
+    const f = this.formColRef.current, p = this.previewColRef.current;
+    if (!f || !p) return;
+    const stacked = Math.abs(f.offsetTop - p.offsetTop) > 4;
+    if (stacked !== this.state.stacked) this.setState({ stacked });
+  };
+
+  componentDidMount() {
+    window.animaloooSignatureHtml = () => this.emailHtml();
+    document.addEventListener('copy', this.onDocCopy);
+    if (window.ResizeObserver && this.mainRef.current) {
+      this.ro = new ResizeObserver(this.checkStacked);
+      this.ro.observe(this.mainRef.current);
+    }
+    this.checkStacked();
+    try {
+      const cur = localStorage.getItem(KEY);
+      const s = JSON.parse(cur || 'null');
+      if (s && typeof s === 'object') {
+        const next = {};
+        SAVED.forEach(k => {
+          if (!(k in s)) return;
+          if (k in OLD_SAMPLE && (s[k] === OLD_SAMPLE[k] || s[k] === SAMPLE[k])) return;
+          next[k] = s[k];
+        });
+        this.lastSaved = cur;
+        this.setState(next);
+      }
+    } catch (e) {}
+    this.restored = true;
+  }
+
+  componentDidUpdate() {
+    const s = this.state;
+    const ringKey = s.photo ? s.photo + '|' + RING : null;
+    if (ringKey !== this.ringFor) {
+      this.ringFor = ringKey;
+      if (!s.photo) {
+        if (s.ringed) this.setState({ ringed: null });
+      } else {
+        const src = s.photo;
+        this.ringify(src, PHOTO, 2).then(url => { if (this.state.photo === src) this.setState({ ringed: url }); }, () => {});
+      }
+    }
+    if (s.ringed) document.querySelectorAll('img[data-sig-photo-img], img[data-photo-thumb]').forEach(this.photoRef);
+    if (!this.restored) return;
+    const out = {};
+    SAVED.forEach(k => { out[k] = s[k]; });
+    const snap = JSON.stringify(out);
+    if (snap !== this.lastSaved) {
+      this.lastSaved = snap;
+      try { localStorage.setItem(KEY, snap); } catch (e) {}
+    }
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.copiedTimer);
+    if (this.ro) this.ro.disconnect();
+    document.removeEventListener('copy', this.onDocCopy);
+  }
+
+  appKey() { return this.state.app || APPS[this.props.defaultApp] || 'gmail'; }
+
+  site() {
+    const s = String(this.props.website ?? 'animal.ooo').trim().replace(/^https?:\/\//i, '').replace(/\/+$/, '');
+    return s || 'animal.ooo';
+  }
+
+  assetUrl(file) {
+    const h = String(this.props.imageHost ?? '').trim();
+    if (h) return h.replace(/\/+$/, '') + '/' + file;
+    return new URL('email-assets/' + file, document.baseURI).href;
+  }
+
+  setStatus(status, statusKind) { this.setState({ status, statusKind, copied: false }); }
+
+  ringify(src, size, k) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+        const D = Math.round(size * k), ring = RING * (size / PHOTO) * k, r = D / 2 - ring / 2;
+        const c = document.createElement('canvas');
+        c.width = c.height = D;
+        const x = c.getContext('2d');
+        x.imageSmoothingQuality = 'high';
+        x.save();
+        x.beginPath();
+        x.arc(D / 2, D / 2, r, 0, Math.PI * 2);
+        x.clip();
+        x.drawImage(img, 0, 0, D, D);
+        x.restore();
+        x.strokeStyle = CERISE;
+        x.lineWidth = ring;
+        x.beginPath();
+        x.arc(D / 2, D / 2, r, 0, Math.PI * 2);
+        x.stroke();
+        resolve(c.toDataURL('image/png'));
+      };
+      img.onerror = reject;
+      img.src = src;
+    });
+  }
+
+  pickPhoto = () => { if (this.fileRef.current) this.fileRef.current.click(); };
+
+  onFile = (e) => {
+    const file = e.target.files && e.target.files[0];
+    e.target.value = '';
+    if (!file) return;
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = () => {
+      const w = img.naturalWidth, h = img.naturalHeight, s = Math.min(w, h);
+      const sx = (w - s) / 2, sy = h > w ? (h - s) * 0.3 : 0;
+      const c = document.createElement('canvas');
+      c.width = c.height = 320;
+      const x = c.getContext('2d');
+      x.imageSmoothingQuality = 'high';
+      x.fillStyle = WHITE;
+      x.fillRect(0, 0, 320, 320);
+      x.drawImage(img, sx, sy, s, s, 0, 0, 320, 320);
+      URL.revokeObjectURL(url);
+      this.setState({ photo: c.toDataURL('image/jpeg', 0.88), photoMode: 'with', status: '' });
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); this.setStatus('Filen gick inte att öppna. Prova ett foto i JPG- eller PNG-format.', 'error'); };
+    img.src = url;
+  };
+
+  downloadPhoto = () => {
+    if (!this.state.photo) return this.setStatus('Ladda upp ditt foto först (steg 02).', 'error');
+    this.ringify(this.state.photo, PHOTO, 1).then(href => {
+      const a = document.createElement('a');
+      a.href = href;
+      a.download = 'signaturfoto.png';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }, () => {});
+  };
+
+  validate() {
+    const s = this.state, name = s.name.trim(), email = s.email.trim();
+    if (!name) return 'Fyll i ditt namn först.';
+    if (!s.title.trim()) return 'Fyll i din titel först.';
+    if (!email) return 'Fyll i din e-postadress först.';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return 'Kontrollera e-postadressen, den ser ofullständig ut.';
+    if (s.photoMode === 'with' && !s.ringed) return 'Ladda upp ett foto först, eller välj Utan foto.';
+    return null;
+  }
+
+  plainText() {
+    const s = this.state;
+    return [s.name.trim(), s.title.trim(), s.phone.trim() && 'T ' + s.phone.trim(), 'E ' + s.email.trim(), 'W ' + this.site()].filter(Boolean).join('\n');
+  }
+
+  emailHtml() {
+    const src = this.sigRef.current;
+    if (!src) return '';
+    const s = this.state;
+    const root = src.cloneNode(true);
+    root.querySelectorAll('[data-sig-ui]').forEach(n => n.remove());
+    if (s.photoMode !== 'with') root.querySelectorAll('[data-sig-photo-cell]').forEach(n => n.remove());
+    if (!s.phone.trim()) root.querySelectorAll('[data-sig-phone-row]').forEach(n => n.remove());
+    const gmail = this.appKey() === 'gmail';
+    root.querySelectorAll('img').forEach(img => {
+      const asset = img.getAttribute('data-sig-asset');
+      if (img.hasAttribute('data-sig-photo-img')) {
+        if (gmail) { img.setAttribute('src', this.assetUrl('photo-placeholder.png')); img.setAttribute('alt', 'Ditt foto'); }
+      } else if (asset) {
+        img.setAttribute('src', this.assetUrl(asset));
+      }
+      img.setAttribute('border', '0');
+    });
+    const hex = (inner) => {
+      const p = inner.split(/[\s,\/]+/).filter(Boolean).map(parseFloat);
+      if (p.length === 4 && p[3] === 0) return 'transparent';
+      return '#' + p.slice(0, 3).map(v => Math.round(v).toString(16).padStart(2, '0')).join('').toUpperCase();
+    };
+    const DROP = ['class', 'role', 'contenteditable', 'spellcheck', 'tabindex', 'draggable', 'aria-label'];
+    [root, ...root.querySelectorAll('*')].forEach(el => {
+      [...el.attributes].forEach(a => { if (a.name.startsWith('data-') || DROP.includes(a.name)) el.removeAttribute(a.name); });
+      const tag = el.tagName;
+      if (tag === 'TABLE') {
+        el.setAttribute('cellpadding', '0');
+        el.setAttribute('cellspacing', '0');
+        el.setAttribute('border', '0');
+        el.setAttribute('role', 'presentation');
+        const w = el.style.width;
+        if (/px$/.test(w)) el.setAttribute('width', String(parseInt(w, 10)));
+        else if (w === '100%') el.setAttribute('width', '100%');
+      }
+      if (tag === 'TD') {
+        if (el.style.verticalAlign) el.setAttribute('valign', el.style.verticalAlign);
+        if (el.style.textAlign) el.setAttribute('align', el.style.textAlign);
+        const w = el.style.width;
+        if (/px$/.test(w) && parseInt(w, 10) > 0) el.setAttribute('width', String(parseInt(w, 10)));
+        const hh = el.style.height;
+        if (/px$/.test(hh) && parseInt(hh, 10) > 0) el.setAttribute('height', String(parseInt(hh, 10)));
+        const bg = el.style.backgroundColor.match(/rgba?\(([^)]*)\)/);
+        if (bg) el.setAttribute('bgcolor', hex(bg[1]));
+      }
+      if (tag === 'TR' && el.style.display) el.style.removeProperty('display');
+      let st = el.getAttribute('style');
+      if (st) {
+        st = st.replace(/rgba?\(([^)]*)\)/g, (m, inner) => hex(inner)).replace(/"/g, "'");
+        if (/line-height/.test(st)) st = 'mso-line-height-rule: exactly; ' + st;
+        el.setAttribute('style', st);
+      } else if (st === '') {
+        el.removeAttribute('style');
+      }
+    });
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_COMMENT);
+    const comments = [];
+    while (walker.nextNode()) comments.push(walker.currentNode);
+    comments.forEach(c => c.remove());
+    return root.outerHTML;
+  }
+
+  selectPreview() {
+    const el = this.sigRef.current, sel = window.getSelection && window.getSelection();
+    if (!el || !sel) return null;
+    const r = document.createRange();
+    r.selectNodeContents(el);
+    sel.removeAllRanges();
+    sel.addRange(r);
+    return sel;
+  }
+
+  putOnClipboard(e, html, text) {
+    if (html) e.clipboardData.setData('text/html', html);
+    e.clipboardData.setData('text/plain', text);
+    e.preventDefault();
+  }
+
+  onCopied(msg, flip) {
+    this.setState({ copied: !!flip, status: msg, statusKind: 'ok' });
+    clearTimeout(this.copiedTimer);
+    if (flip) this.copiedTimer = setTimeout(() => this.setState({ copied: false }), 2500);
+  }
+
+  onDocCopy = (e) => {
+    const p = this.pending, el = this.sigRef.current, sel = window.getSelection();
+    if (!p) return;
+    this.pending = null;
+    if (!el || !sel || !sel.rangeCount || !el.contains(sel.getRangeAt(0).commonAncestorContainer)) return;
+    this.putOnClipboard(e, p.html, p.text);
+    sel.removeAllRanges();
+    this.onCopied(p.msg, p.flip);
+  };
+
+  copyThen(html, text, msg, flip) {
+    this.pending = null;
+    this.writeClipboard(html, text).then(ok => {
+      if (ok) return this.onCopied(msg, flip);
+      this.pending = { html, text, msg, flip };
+      this.selectPreview();
+      this.setStatus('Ett steg kvar: tryck Ctrl + C (Cmd + C på Mac) för att kopiera klart.', 'ok');
+    });
+  }
+
+  writeClipboard(html, text) {
+    let done = false;
+    const handler = (e) => { this.putOnClipboard(e, html, text); done = true; };
+    document.addEventListener('copy', handler);
+    const sel = this.selectPreview();
+    try { document.execCommand('copy'); } catch (err) {}
+    document.removeEventListener('copy', handler);
+    if (sel) sel.removeAllRanges();
+    if (done) return Promise.resolve(true);
+    if (navigator.clipboard && window.ClipboardItem) {
+      const items = { 'text/plain': new Blob([text], { type: 'text/plain' }) };
+      if (html) items['text/html'] = new Blob([html], { type: 'text/html' });
+      return navigator.clipboard.write([new ClipboardItem(items)]).then(() => true, () => false);
+    }
+    return Promise.resolve(false);
+  }
+
+  copySignature = () => {
+    const err = this.validate();
+    if (err) return this.setStatus(err, 'error');
+    const where = { gmail: 'Gmail', outlook: 'Outlook', apple: 'Mail' }[this.appKey()];
+    this.copyThen(this.emailHtml(), this.plainText(), 'Kopierad. Klistra nu in den i ' + where + ' enligt stegen nedan.', true);
+  };
+
+  copyCode = () => {
+    const err = this.validate();
+    if (err) return this.setStatus(err, 'error');
+    this.copyThen(null, this.emailHtml(), 'HTML-koden är kopierad.', false);
+  };
+
+  renderVals() {
+    const s = this.state, app = this.appKey(), site = this.site();
+    const withPhoto = s.photoMode === 'with';
+    const seg = (on) => (on ? [INK, SNOW] : [WHITE, INK]);
+    const [photoOnBg, photoOnFg] = seg(withPhoto);
+    const [photoOffBg, photoOffFg] = seg(!withPhoto);
+    const [gmailBg, gmailFg] = seg(app === 'gmail');
+    const [outlookBg, outlookFg] = seg(app === 'outlook');
+    const [appleBg, appleFg] = seg(app === 'apple');
+    const set = (k) => (e) => this.setState({ [k]: e.target.value, status: '' });
+    const pristine = !(s.name + s.title + s.phone + s.email).trim();
+    const displayPhone = s.phone.trim() || (pristine ? SAMPLE.phone : '');
+    const displayEmail = s.email.trim() || SAMPLE.email;
+    return {
+      headerProps: { style: { flexWrap: 'wrap', height: 'auto', minHeight: 48, rowGap: 12, columnGap: 24, color: CERISE } },
+      needsHost: !String(this.props.imageHost ?? '').trim() && !/(^|\.)github\.io$/i.test(location.hostname),
+      name: s.name, title: s.title, phone: s.phone, email: s.email, website: site,
+      onName: set('name'), onTitle: set('title'), onPhone: set('phone'), onEmail: set('email'),
+      displayName: s.name.trim() || SAMPLE.name,
+      displayTitle: s.title.trim() || SAMPLE.title,
+      displayEmail, displayPhone,
+      telHref: 'tel:' + displayPhone.replace(/[^\d+]/g, ''),
+      mailHref: 'mailto:' + displayEmail,
+      siteHref: 'https://' + site,
+      phoneRowDisplay: displayPhone ? 'table-row' : 'none',
+      withPhoto, withoutPhoto: !withPhoto,
+      hasPhoto: withPhoto && !!s.ringed,
+      noPhotoYet: withPhoto && !s.ringed,
+      photoRef: this.photoRef,
+      uploadLabel: s.photo ? 'Byt foto' : 'Ladda upp foto',
+      photoOnBg, photoOnFg, photoOffBg, photoOffFg,
+      choosePhoto: () => this.setState({ photoMode: 'with', status: '' }),
+      chooseNoPhoto: () => this.setState({ photoMode: 'without', status: '' }),
+      pickPhoto: this.pickPhoto, onFile: this.onFile, fileRef: this.fileRef,
+      removePhoto: () => this.setState({ photo: null, status: '' }),
+      downloadPhoto: this.downloadPhoto,
+      isGmail: app === 'gmail', isOutlook: app === 'outlook', isApple: app === 'apple',
+      gmailBg, gmailFg, outlookBg, outlookFg, appleBg, appleFg,
+      pickGmail: () => this.setState({ app: 'gmail', status: '' }),
+      pickOutlook: () => this.setState({ app: 'outlook', status: '' }),
+      pickApple: () => this.setState({ app: 'apple', status: '' }),
+      gmailLastNum: withPhoto ? '5' : '4',
+      copySignature: this.copySignature, copyCode: this.copyCode,
+      copyIcon: s.copied ? 'ClipboardCheck' : 'ClipboardCopy',
+      copyLabel: s.copied ? 'Kopierad' : 'Kopiera signaturen',
+      status: s.status,
+      statusColor: s.statusKind === 'error' ? '#A82F6D' : INK,
+      sigRef: this.sigRef,
+      mainRef: this.mainRef, formColRef: this.formColRef, previewColRef: this.previewColRef,
+      previewPos: s.stacked ? 'static' : 'sticky',
+    };
+  }
+}
+</script>
+</body>
+</html>

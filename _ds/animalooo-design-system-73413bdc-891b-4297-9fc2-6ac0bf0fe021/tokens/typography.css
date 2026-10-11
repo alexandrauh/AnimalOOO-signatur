@@ -1,0 +1,65 @@
+/* AnimalOOO typography tokens.
+   Typeface: Plus Jakarta Sans (all brand typography). Inclusive Sans appears only on the
+   guideline cover title and the footer credit line. Hierarchy from frame "Visual Identity – 10.2". */
+:root {
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-cover: "Inclusive Sans", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ── Hierarchy (documented rules: weight / line height / letter spacing) ── */
+  /* 1 Display — Jakarta Bold, LH 90%, LS -1% */
+  --type-display-size: 96px;
+  --type-display-weight: 700;
+  --type-display-line: 0.9;
+  --type-display-tracking: -0.01em;
+  /* 2 Headline — Jakarta Semibold, LH 100%, LS -1% */
+  --type-headline-size: 56px;
+  --type-headline-weight: 600;
+  --type-headline-line: 1;
+  --type-headline-tracking: -0.01em;
+  /* 3 Subheader — Jakarta Semibold, LH 150%, LS 0% */
+  --type-subheader-size: 24px;
+  --type-subheader-weight: 600;
+  --type-subheader-line: 1.5;
+  --type-subheader-tracking: 0em;
+  /* 4 Body text — Jakarta Medium, LH 150%, LS 0% */
+  --type-body-size: 16px;
+  --type-body-weight: 500;
+  --type-body-line: 1.5;
+  --type-body-tracking: 0em;
+  /* 5 Label — Jakarta Regular, LH 120%, LS 0% */
+  --type-label-size: 15px;
+  --type-label-weight: 400;
+  --type-label-line: 1.2;
+  --type-label-tracking: 0em;
+
+  /* ── Guideline-page (deck) styles, as used across the 1920×1080 pages ── */
+  --type-cover-size: 160px;            /* Inclusive Sans, LH 150% */
+  --type-section-number-size: 80px;    /* "01" Regular, cerise, LH 100% */
+  --type-section-title-size: 80px;     /* "Logo" Bold, LH 100% */
+  --type-contents-size: 72px;          /* contents list, LH 150% (numbers Medium, items Semibold) */
+  --type-specimen-size: 72px;          /* glyph specimen Semibold, LH 125%, LS 3% */
+  --type-page-title-size: 40px;        /* "Hierarchy", "Branding colours" Semibold, LH 120%, LS -1% */
+  --type-group-title-size: 24px;       /* "Working colours" / "Style 1 - quirky" Semibold, LH 120%, LS -1%/-2% */
+  --type-lead-size: 24px;              /* intro paragraph Regular, LH 150% */
+  --type-specimen-body-size: 22px;     /* typeface description Regular, LH 145%, LS 3% */
+  --type-breadcrumb-size: 20px;        /* Header breadcrumb Regular, LH 120% */
+  --type-credit-size: 20px;            /* Footer credits, Inclusive Sans Medium, LH 120% */
+  --type-spec-title-size: 18px;        /* hierarchy legend "Display" Medium, LH 120%, LS -1% */
+  --type-note-size: 16px;              /* captions / notes Regular, LH 100%, LS -2% */
+  --type-swatch-size: 16px;            /* "HEX #CD3A85" Bold, LH 100%, LS -2% */
+  --type-caption-size: 15px;           /* imagery descriptions Regular, LH 118%, LS -2% */
+  --type-bullet-size: 12px;            /* numbered bullet Medium, LH 90%, LS -2% */
+
+  --tracking-tight: -0.02em;
+  --tracking-snug: -0.01em;
+  --tracking-wide: 0.03em;
+
+  /* semantic */
+  --text-body-font: var(--font-sans);
+  --text-heading-font: var(--font-sans);
+}

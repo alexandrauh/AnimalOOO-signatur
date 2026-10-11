@@ -1,0 +1,84 @@
+/* AnimalOOO colour tokens — values copied verbatim from the Figma file
+   "AnimalOOO Brand Guidelines" (frames: Visual Identity – 48 "Branding colours",
+   Visual Identity – Color – Categories "Working / Helping / UI / Bg / Text colours"). */
+:root {
+  /* ── Branding colours ─────────────────────────────────────────────── */
+  --ooo-cerise: #CD3A85;          /* "OOO Cerice" — primary. RGB 205 58 133 · CMYK 17 88 9 0 */
+  --ooo-cerise-dark: #A82F6D;     /* RGB 168 47 109 */
+  --ooo-cerise-light: #D1669C;    /* RGB 209 102 156 */
+  --ooo-brown: #95796B;           /* "OOO Brown" — secondary. RGB 149 121 107 */
+  --ooo-brown-dark: #7E5E53;      /* RGB 126 94 83 */
+  --ooo-brown-light: #C6ADA4;     /* RGB 198 173 164 */
+
+  /* ── Neutrals ────────────────────────────────────────────────────── */
+  --ooo-ink: #141414;             /* Text colour — primary text, rgb(20,20,20) */
+  --ooo-snow: #FFFCFC;            /* Text colour — text on dark / cerise */
+  --ooo-paper: #FBF8F7;           /* Bg colour — page background */
+  --ooo-white: #FFFFFF;           /* artwork tiles behind logos, icons, imagery */
+  --ooo-black: #000000;           /* black logo / illustration variants */
+  --ooo-graphite: #1E1E1E;        /* footer credit line, rgb(30,30,30) */
+
+  /* ── UI colours ──────────────────────────────────────────────────── */
+  --ooo-ui-1: #D0AFA3;
+  --ooo-ui-2: #E5CDC5;
+  --ooo-ui-3: #F5E3DE;
+  --ooo-sand: #F1E7E3;            /* panel fill on guideline pages (= Age light tint) */
+
+  /* ── Working colours (data categories; 6 hues × 3 tints) ─────────── */
+  --ooo-mk: #DF8556;              /* OOO MK */
+  --ooo-mk-mid: #EEA886;
+  --ooo-mk-light: #FDDBC8;
+  --ooo-f: #58A270;               /* OOO F */
+  --ooo-f-mid: #ACCFB8;
+  --ooo-f-light: #DEECE2;
+  --ooo-founders: #A279C4;        /* OOO Founders */
+  --ooo-founders-mid: #D0BDE0;    /* also "OOO Founder" helping colour */
+  --ooo-founders-light: #ECE4F3;
+  --ooo-offspring: #F5C168;       /* OOO Offspring */
+  --ooo-offspring-mid: #FFDDA6;
+  --ooo-offspring-light: #FFEBC9;
+  --ooo-ne: #2694AE;              /* OOO Ne */
+  --ooo-nc: #A0D3DF;              /* OOO NC (Ne mid tint) */
+  --ooo-ne-light: #D0EAF0;
+  --ooo-age: #95796B;             /* OOO Age (= brand brown) */
+  --ooo-age-mid: #C6ADA4;
+  --ooo-age-light: #F1E7E3;
+
+  /* ── Helping colours (status / sex) ──────────────────────────────── */
+  --ooo-hane: #BAE6FD;            /* Hane (male) — Preline Sky 200 */
+  --ooo-hona: #FBCFE8;            /* Hona (female) — Preline Pink 200 */
+  --ooo-not-bred-yet: #CEE3B9;
+  --ooo-extinct: #E6DEDE;
+  --ooo-risk: #CC3F5E;
+
+  /* ── Semantic aliases ────────────────────────────────────────────── */
+  --brand-primary: var(--ooo-cerise);
+  --brand-primary-strong: var(--ooo-cerise-dark);
+  --brand-primary-soft: var(--ooo-cerise-light);
+  --brand-secondary: var(--ooo-brown);
+  --brand-secondary-strong: var(--ooo-brown-dark);
+  --brand-secondary-soft: var(--ooo-brown-light);
+
+  --surface-page: var(--ooo-paper);
+  --surface-panel: var(--ooo-sand);
+  --surface-tile: var(--ooo-white);
+  --surface-brand: var(--ooo-cerise);
+  --surface-brand-alt: var(--ooo-brown);
+  --surface-ink: var(--ooo-ink);
+
+  --text-primary: var(--ooo-ink);
+  --text-secondary: var(--ooo-brown-dark);
+  --text-accent: var(--ooo-cerise);
+  --text-on-brand: var(--ooo-snow);
+  --text-on-dark: var(--ooo-snow);
+  --text-credit: var(--ooo-graphite);
+
+  --border-swatch: var(--ooo-brown);              /* 1px inset outline on light swatches */
+  --border-swatch-ink: rgba(20, 20, 20, 0.5);
+
+  --status-male: var(--ooo-hane);
+  --status-female: var(--ooo-hona);
+  --status-not-bred-yet: var(--ooo-not-bred-yet);
+  --status-extinct: var(--ooo-extinct);
+  --status-risk: var(--ooo-risk);
+}

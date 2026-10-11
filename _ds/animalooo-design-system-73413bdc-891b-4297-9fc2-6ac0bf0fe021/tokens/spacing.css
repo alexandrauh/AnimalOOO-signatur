@@ -1,0 +1,36 @@
+/* AnimalOOO spacing, layout, radius and border tokens — exact auto-layout values
+   from the guideline pages (1920×1080 frames, 64px margins). */
+:root {
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-16: 16px;
+  --space-18: 18px;
+  --space-24: 24px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-60: 60px;
+  --space-64: 64px;
+  --space-96: 96px;
+  --space-175: 175px;
+
+  /* layout */
+  --page-width: 1920px;
+  --page-height: 1080px;
+  --page-margin: 64px;          /* padding on every page */
+  --page-gap: 64px;             /* header → content */
+  --page-content-width: 1792px;
+  --header-height: 48px;
+  --grid-gap: 48px;             /* tile grids (imagery, logos, icons) */
+  --swatch-gap: 24px;           /* colour cards */
+  --swatch-label-gap: 8px;
+  --section-gap: 175px;         /* header → divider title on section / contents pages */
+  --column-wide: 872px;         /* right column on logo + favicon pages */
+
+  /* radius — the identity is square-cornered */
+  --radius-none: 0px;
+  --radius-bullet: 32px;        /* 18×18 numbered bullet */
+
+  /* borders */
+  --border-hairline: 1px;
+  --icon-stroke: 1px;
+}

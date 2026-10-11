@@ -1,0 +1,12 @@
+/* NOTE: the file's only Variable collection ("Ungrouped", 4 colours, prefixed "CubaseBio").
+   None of these are referenced by any AnimalOOO page — they appear to be carried over from
+   another project. Kept for completeness; do not use them for AnimalOOO work. */
+/* Generated from Figma Variables. First mode = :root default.
+   FLOAT tokens are unitless — multiply by 1px in calc() where a length is needed. */
+
+:root {
+  --cubasebio-electric: rgb(222,245,128); /* @kind color */
+  --cubasebio-metal-dark: rgb(72,75,84); /* @kind color */
+  --cubasebio-midnight: rgb(11,14,23); /* @kind color */
+  --cubasebio-white: rgb(255,255,255); /* @kind color */
+}
