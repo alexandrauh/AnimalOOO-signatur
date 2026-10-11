@@ -20,20 +20,26 @@
 body { margin: 0; background: #FBF8F7; }
 a { color: #A82F6D; }
 a:hover { color: #141414; }
+[data-pick-photo] { background: #F1E7E3; }
+[data-pick-photo]:hover { background: #E9DAD4; }
 </style>
 </helmet>
 <div lang="sv" style="min-height: 100vh; background: #FBF8F7; color: #141414; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-weight: 500;">
 <div style="max-width: 1320px; margin: 0 auto; padding: 40px clamp(20px, 5vw, 64px) 96px; box-sizing: border-box;">
 
-<x-import component-from-global-scope="AnimalOOODesignSystem_73413b.Header" breadcrumb="Animal.OOO / E-postsignatur" dc-props="{{ headerProps }}" hint-size="100%,48px"></x-import>
+<x-import component-from-global-scope="AnimalOOODesignSystem_73413b.Header" breadcrumb="E-postsignatur" dc-props="{{ headerProps }}" hint-size="100%,48px"></x-import>
 
 <sc-if value="{{ needsHost }}" hint-placeholder-val="{{ false }}">
 <div style="margin-top: 32px; background: #F1E7E3; padding: 16px 20px; font-size: 15px; line-height: 1.5; text-wrap: pretty;"><strong style="font-weight: 700;">Innan du delar sidan:</strong> ladda upp mappen email-assets till er webbplats och skriv in dess webbadress under Tweaks (imageHost). Tills dess syns inte logotypen, djuren och ikonerna för dem som får dina mejl.</div>
 </sc-if>
 
+<sc-if value="{{ needsPhotoHost }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top: 32px; background: #F1E7E3; padding: 16px 20px; font-size: 15px; line-height: 1.5; text-wrap: pretty;"><strong style="font-weight: 700;">Innan du delar sidan:</strong> fyll i Cloudinary-kontots namn och upload preset (PHOTO_CLOUD och PHOTO_PRESET längst upp i skriptet i index.html). Tills dess går det inte att lägga till foto i signaturen.</div>
+</sc-if>
+
 <div style="margin-top: 64px; max-width: 640px;">
 <h1 style="margin: 0; font-size: 40px; line-height: 1.2; font-weight: 600; letter-spacing: -0.01em;">Din e-postsignatur</h1>
-<p style="margin: 12px 0 0; font-size: 18px; line-height: 1.5; font-weight: 500; color: #7E5E53; text-wrap: pretty;">Fyll i dina uppgifter, kopiera signaturen och klistra in den i ditt e-postprogram. Sedan kan du själv ändra texten när du vill, direkt i e-postinställningarna.</p>
+<p style="margin: 12px 0 0; font-size: 18px; line-height: 1.5; font-weight: 500; color: #7E5E53; text-wrap: pretty;">Fyll i dina uppgifter, kopiera signaturen och klistra in den i ditt e-postprogram. Ändras något senare fyller du bara i sidan igen och klistrar in på nytt.</p>
 </div>
 
 <div ref="{{ mainRef }}" style="margin-top: 56px; display: flex; flex-wrap: wrap-reverse; gap: 56px 64px; align-items: flex-end;">
@@ -96,7 +102,15 @@ a:hover { color: #141414; }
 <button type="button" onClick="{{ removePhoto }}" style="padding: 0; background: none; border: 0; font-family: inherit; font-size: 15px; font-weight: 600; color: #A82F6D; text-decoration: underline; text-underline-offset: 3px; cursor: pointer;" style-hover="color: #141414;">Ta bort</button>
 </sc-if>
 </div>
-<span style="font-size: 14px; line-height: 1.45; color: #7E5E53; text-wrap: pretty;">Ett tydligt foto av ansiktet blir bäst. Det beskärs till en cirkel åt dig.</span>
+<sc-if value="{{ hasPhotoStatus }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px;">
+<span role="status" style="font-size: 14px; line-height: 1.45; font-weight: 600; color: {{ photoStatusColor }}; text-wrap: pretty;">{{ photoStatus }}</span>
+<sc-if value="{{ uploadFailed }}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{ retryUpload }}" style="padding: 0; background: none; border: 0; font-family: inherit; font-size: 14px; font-weight: 600; color: #A82F6D; text-decoration: underline; text-underline-offset: 3px; cursor: pointer;" style-hover="color: #141414;">Försök igen</button>
+</sc-if>
+</div>
+</sc-if>
+<span style="font-size: 14px; line-height: 1.45; color: #7E5E53; text-wrap: pretty;">Ett tydligt foto av ansiktet blir bäst. Det beskärs till en cirkel åt dig. När du väljer ett foto laddas det direkt upp till bildtjänsten Cloudinary och får en offentlig webbadress, så att det syns för alla som får dina mejl. Vill du att ett uppladdat foto raderas helt, säg till den som ansvarar för signaturerna.</span>
 </div>
 </div>
 </sc-if>
@@ -115,6 +129,7 @@ a:hover { color: #141414; }
 <button type="button" onClick="{{ pickOutlook }}" aria-pressed="{{ isOutlook }}" style="flex: 1; height: 44px; padding: 0 8px; border: 0; border-left: 1px solid #141414; border-radius: 0; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; background: {{ outlookBg }}; color: {{ outlookFg }};">Outlook</button>
 <button type="button" onClick="{{ pickApple }}" aria-pressed="{{ isApple }}" style="flex: 1; height: 44px; padding: 0 8px; border: 0; border-left: 1px solid #141414; border-radius: 0; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; background: {{ appleBg }}; color: {{ appleFg }};">Apple Mail</button>
 </div>
+<span style="font-size: 14px; line-height: 1.45; color: #7E5E53; text-wrap: pretty;">Gör stegen nedan på datorn. Det går inte att göra i mobilen.</span>
 </div>
 
 <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 12px;">
@@ -127,48 +142,49 @@ a:hover { color: #141414; }
 
 <sc-if value="{{ isGmail }}" hint-placeholder-val="{{ true }}">
 <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px;">
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">1</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Klicka på kugghjulet i Gmail och sedan på <strong style="font-weight: 700;">Visa alla inställningar</strong>.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">1</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Öppna Gmail i webbläsaren på datorn. Klicka på kugghjulet uppe till höger och sedan på <strong style="font-weight: 700;">Visa alla inställningar</strong>.</span></li>
 <li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">2</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Scrolla ner till <strong style="font-weight: 700;">Signatur</strong> på fliken Allmänt och klicka på <strong style="font-weight: 700;">Skapa ny</strong>. Ge den valfritt namn.</span></li>
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">3</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Klicka i signaturrutan och klistra in: Ctrl + V, eller Cmd + V på Mac.</span></li>
-<sc-if value="{{ withPhoto }}" hint-placeholder-val="{{ true }}">
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">4</span><span style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 6px;"><span style="text-wrap: pretty;">Gmail tar inte med foton som klistras in, så lägg till ditt för hand: klicka på cirkeln <strong style="font-weight: 700;">Ditt foto</strong> och tryck på raderingstangenten (⌫ eller Backspace). Klicka sedan på ikonen Infoga bild, välj <strong style="font-weight: 700;">Ladda upp</strong> och välj filen signaturfoto.png.</span><button type="button" onClick="{{ downloadPhoto }}" style="padding: 0; background: none; border: 0; font-family: inherit; font-size: 15px; font-weight: 600; color: #A82F6D; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; text-align: left;" style-hover="color: #141414;">Ladda ner ditt foto i rätt storlek</button></span></li>
-</sc-if>
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">{{ gmailLastNum }}</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Välj längre ner att signaturen ska användas för nya mejl och för svar. Klicka på <strong style="font-weight: 700;">Spara ändringar</strong> längst ner på sidan.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">3</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Klicka i signaturrutan, markera allt med <strong style="font-weight: 700;">{{ selectAllKeys }}</strong> och klistra in med <strong style="font-weight: 700;">{{ pasteKeys }}</strong>.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">4</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Under signaturrutan väljer du den nya signaturen både för nya mejl och för svar. Klicka sedan på <strong style="font-weight: 700;">Spara ändringar</strong> längst ner på sidan.</span></li>
 </ol>
 </sc-if>
 
 <sc-if value="{{ isOutlook }}" hint-placeholder-val="{{ false }}">
 <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px;">
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">1</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Öppna <strong style="font-weight: 700;">Inställningar</strong> i Outlook, sedan <strong style="font-weight: 700;">Konton</strong> och <strong style="font-weight: 700;">Signaturer</strong>. I klassiska Outlook: Arkiv, Alternativ, E-post, Signaturer.</span></li>
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">2</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Klicka på <strong style="font-weight: 700;">Ny signatur</strong> och ge den valfritt namn.</span></li>
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">3</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Klicka i signaturrutan och klistra in: Ctrl + V, eller Cmd + V på Mac.</span></li>
-<sc-if value="{{ withPhoto }}" hint-placeholder-val="{{ true }}">
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">4</span><span style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 6px;"><span style="text-wrap: pretty;">Byt ut cirkeln <strong style="font-weight: 700;">Ditt foto</strong> mot ditt eget foto: högerklicka på cirkeln och välj <strong style="font-weight: 700;">Klipp ut</strong>. Klicka sedan på bildknappen i signaturverktyget och välj filen signaturfoto.png.</span><button type="button" onClick="{{ downloadPhoto }}" style="padding: 0; background: none; border: 0; font-family: inherit; font-size: 15px; font-weight: 600; color: #A82F6D; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; text-align: left;" style-hover="color: #141414;">Ladda ner ditt foto i rätt storlek</button></span></li>
-</sc-if>
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">{{ outlookLastNum }}</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Välj längst ner att den ska användas för nya meddelanden och svar. Klicka sedan på <strong style="font-weight: 700;">Spara</strong>.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">1</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Öppna signaturinställningarna. Nya Outlook och Outlook på webben: klicka på kugghjulet uppe till höger, sedan <strong style="font-weight: 700;">Konton</strong> och <strong style="font-weight: 700;">Signaturer</strong>. Klassiska Outlook för Windows: <strong style="font-weight: 700;">Arkiv</strong>, <strong style="font-weight: 700;">Alternativ</strong>, <strong style="font-weight: 700;">E-post</strong>, <strong style="font-weight: 700;">Signaturer</strong>. Outlook på Mac: välj <strong style="font-weight: 700;">Outlook</strong>, <strong style="font-weight: 700;">Inställningar</strong> i menyraden och klicka på <strong style="font-weight: 700;">Signaturer</strong>.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">2</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Klicka på <strong style="font-weight: 700;">Lägg till signatur</strong> (i klassiska Outlook <strong style="font-weight: 700;">Ny</strong>, på Mac <strong style="font-weight: 700;">+</strong>) och ge den valfritt namn.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">3</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Klicka i signaturrutan, markera allt med <strong style="font-weight: 700;">{{ selectAllKeys }}</strong> och klistra in med <strong style="font-weight: 700;">{{ pasteKeys }}</strong>.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">4</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Välj att signaturen ska användas för nya meddelanden och för svar. Klicka sedan på <strong style="font-weight: 700;">Spara</strong>. I klassiska Outlook klickar du till sist på <strong style="font-weight: 700;">OK</strong>. På Mac finns ingen Spara-knapp, där stänger du bara fönstret.</span></li>
 </ol>
 </sc-if>
 
 <sc-if value="{{ isApple }}" hint-placeholder-val="{{ false }}">
 <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px;">
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">1</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Välj <strong style="font-weight: 700;">Mail</strong>, <strong style="font-weight: 700;">Inställningar</strong> i menyraden och klicka på <strong style="font-weight: 700;">Signaturer</strong>.</span></li>
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">2</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Markera ditt konto i vänsterkolumnen och klicka på plustecknet under kolumnen i mitten.</span></li>
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">3</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Avmarkera kryssrutan som gör att signaturen alltid får ditt standardtypsnitt.</span></li>
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">4</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Klicka i signaturrutan till höger och klistra in med Cmd + V. Den sparas automatiskt. Bilderna kan se trasiga ut här, men de syns när du skriver ett mejl.</span></li>
-<sc-if value="{{ withPhoto }}" hint-placeholder-val="{{ true }}">
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">5</span><span style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 6px;"><span style="text-wrap: pretty;">Byt ut rutan <strong style="font-weight: 700;">Ditt foto</strong> mot ditt eget foto, i den här ordningen: dra först filen signaturfoto.png från mappen Hämtade filer (Downloads) och släpp den precis på rutan <strong style="font-weight: 700;">Ditt foto</strong>. Högerklicka sedan på rutan <strong style="font-weight: 700;">Ditt foto</strong> och välj <strong style="font-weight: 700;">Klipp ut</strong> (Cut).</span><button type="button" onClick="{{ downloadPhoto }}" style="padding: 0; background: none; border: 0; font-family: inherit; font-size: 15px; font-weight: 600; color: #A82F6D; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; text-align: left;" style-hover="color: #141414;">Ladda ner ditt foto i rätt storlek</button></span></li>
-</sc-if>
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">{{ appleLastNum }}</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Välj den i menyn <strong style="font-weight: 700;">Välj signatur</strong> längst ner.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">1</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Öppna Mail på din Mac och välj <strong style="font-weight: 700;">Mail</strong>, <strong style="font-weight: 700;">Inställningar</strong> i menyraden. Klicka på <strong style="font-weight: 700;">Signaturer</strong>.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">2</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Markera ditt konto i vänsterkolumnen (inte Alla signaturer) och klicka på <strong style="font-weight: 700;">+</strong> under kolumnen i mitten.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">3</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Avmarkera <strong style="font-weight: 700;">Matcha alltid det förvalda mejltypsnittet</strong> under den stora rutan till höger. Gör det innan du klistrar in.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">4</span><span style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 4px;"><span style="text-wrap: pretty;">Klicka i den stora rutan till höger. Markera allt med <strong style="font-weight: 700;">Cmd + A</strong> och klistra in med <strong style="font-weight: 700;">Cmd + V</strong>. Den sparas automatiskt.</span><span style="font-size: 14px; line-height: 1.45; color: #7E5E53; text-wrap: pretty;">Här visas bilderna ofta som frågetecken och den cerise rutan kan hamna under texten. Det är normalt.</span></span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">5</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Välj den nya signaturen i menyn <strong style="font-weight: 700;">Välj signatur</strong> längst ner.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">6</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Kontrollera resultatet: öppna ett nytt mejl med <strong style="font-weight: 700;">Cmd + N</strong>. Där ska signaturen synas med alla bilder.</span></li>
 </ol>
+<details style="border-top: 1px solid #E9DAD4; padding-top: 12px;">
+<summary style="cursor: pointer; font-size: 15px; line-height: 1.5; font-weight: 600; color: #A82F6D;">Fungerar det inte?</summary>
+<ul style="margin: 10px 0 0; padding: 0 0 0 20px; display: flex; flex-direction: column; gap: 8px;">
+<li style="font-size: 15px; line-height: 1.5; text-wrap: pretty;">Klistrade du in innan du avmarkerade rutan i steg 3? Ta bort signaturen med <strong style="font-weight: 700;">–</strong> under mittenkolumnen, skapa en ny och börja om från steg 3.</li>
+<li style="font-size: 15px; line-height: 1.5; text-wrap: pretty;">Syns inga bilder i nya mejl? Öppna <strong style="font-weight: 700;">Integritet</strong> i Mails inställningar och se till att fjärrinnehåll inte blockeras.</li>
+<li style="font-size: 15px; line-height: 1.5; text-wrap: pretty;">Ligger den gamla texten kvar? Klicka i rutan, tryck <strong style="font-weight: 700;">Cmd + A</strong> och klistra in igen.</li>
+<li style="font-size: 15px; line-height: 1.5; text-wrap: pretty;">Kopiera aldrig signaturen från ett mejl du har skickat. Använd alltid knappen <strong style="font-weight: 700;">Kopiera signaturen</strong> här.</li>
+</ul>
+</details>
 </sc-if>
 
 <div style="background: #F1E7E3; padding: 20px 24px; display: flex; flex-direction: column; gap: 6px;">
 <span style="font-size: 16px; line-height: 1.5; font-weight: 700;">Ändra dina uppgifter senare</span>
-<span style="font-size: 15px; line-height: 1.5; text-wrap: pretty;">Öppna samma signaturinställningar och ändra texten där, precis som i ett vanligt dokument. Layout och bilder ligger kvar.</span>
+<span style="font-size: 15px; line-height: 1.5; text-wrap: pretty;">Fyll i den här sidan igen och kopiera signaturen. Klicka i den gamla signaturen i e-postprogrammet, markera allt med <strong style="font-weight: 700;">{{ selectAllKeys }}</strong> och klistra in. Skriv inte om telefonnummer eller e-postadress direkt i e-postprogrammet, för då går länkarna fortfarande till de gamla uppgifterna.</span>
 </div>
 
 <div style="font-size: 14px; line-height: 1.5; color: #7E5E53; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px;">
-<span>Ska du lägga in signaturen åt alla, eller använder du ett annat e-postprogram?</span>
+<span>Använder du ett annat e-postprogram? Kopiera signaturen med knappen ovan och klistra in den i programmets signaturinställningar. Behöver programmet HTML-kod, eller ska du lägga in signaturen åt alla?</span>
 <button type="button" onClick="{{ copyCode }}" style="padding: 0; background: none; border: 0; font-family: inherit; font-size: 14px; font-weight: 600; color: #A82F6D; text-decoration: underline; text-underline-offset: 3px; cursor: pointer;" style-hover="color: #141414;">Kopiera HTML-koden</button>
 </div>
 </section>
@@ -180,41 +196,7 @@ a:hover { color: #141414; }
 <span style="font-size: 14px; line-height: 1.2; color: #7E5E53;">Verklig storlek</span>
 </div>
 <div style="background: #FFFFFF; padding: 48px clamp(20px, 4vw, 48px); overflow-x: auto;">
-<div ref="{{ sigRef }}" style="max-width: 560px; font-size: 0; line-height: 0;">
-<div style="display: inline-block; width: 268px; padding: 0 28px 24px 0; vertical-align: middle; font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif; font-size: 14px; line-height: 20px; color: #141414;">
-<sc-if value="{{ withPhoto }}" hint-placeholder-val="{{ true }}">
-<div data-sig-photo-cell="1">
-<sc-if value="{{ hasPhoto }}" hint-placeholder-val="{{ false }}">
-<img ref="{{ photoRef }}" data-sig-photo-img="1" width="80" height="80" alt="{{ displayName }}" style="display: block; width: 80px; height: 80px; border: 0;">
-</sc-if>
-<sc-if value="{{ noPhotoYet }}" hint-placeholder-val="{{ true }}">
-<div data-sig-ui="1" onClick="{{ pickPhoto }}" style="width: 80px; height: 80px; box-sizing: border-box; border-radius: 50%; border: 6px solid #CD3A85; background: #F1E7E3; display: flex; align-items: center; justify-content: center; text-align: center; cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; line-height: 1.2; font-weight: 600; color: #7E5E53;" style-hover="background: #E9DAD4;">Lägg till<br>foto</div>
-</sc-if>
-<div style="font-size: 20px; line-height: 20px; height: 20px;">&nbsp;</div>
-</div>
-</sc-if>
-<div style="font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif; font-size: 24px; line-height: 30px; font-weight: bold; letter-spacing: -0.01em; color: #141414;">{{ displayName }}</div>
-<div style="font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif; font-size: 14px; line-height: 20px; font-weight: 600; color: #CD3A85;">{{ displayTitle }}</div>
-<div style="font-size: 16px; line-height: 16px; height: 16px;">&nbsp;</div>
-<table style="border-collapse: collapse; border-spacing: 0;">
-<tbody>
-<tr data-sig-phone-row="1" style="display: {{ phoneRowDisplay }};">
-<td style="padding: 4px 0 0 0; width: 22px; vertical-align: top; font-size: 0; line-height: 14px;"><img src="email-assets/icon-phone.png" data-sig-asset="icon-phone.png" width="14" height="14" alt="Telefon" style="display: block; width: 14px; height: 14px; border: 0; color: #CD3A85; font-family: Arial, Helvetica, sans-serif; font-size: 10px;"></td>
-<td style="padding: 0; vertical-align: top; font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif; font-size: 13px; line-height: 21px; font-weight: 500; color: #141414;"><a href="{{ telHref }}" style="color: #141414; text-decoration: none;">{{ displayPhone }}</a></td>
-</tr>
-<tr>
-<td style="padding: 4px 0 0 0; width: 22px; vertical-align: top; font-size: 0; line-height: 14px;"><img src="email-assets/icon-mail.png" data-sig-asset="icon-mail.png" width="14" height="14" alt="E-post" style="display: block; width: 14px; height: 14px; border: 0; color: #CD3A85; font-family: Arial, Helvetica, sans-serif; font-size: 10px;"></td>
-<td style="padding: 0; vertical-align: top; font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif; font-size: 13px; line-height: 21px; font-weight: 500; color: #141414;"><a href="{{ mailHref }}" style="color: #141414; text-decoration: none;">{{ displayEmail }}</a></td>
-</tr>
-<tr>
-<td style="padding: 4px 0 0 0; width: 22px; vertical-align: top; font-size: 0; line-height: 14px;"><img src="email-assets/icon-web.png" data-sig-asset="icon-web.png" width="14" height="14" alt="Webb" style="display: block; width: 14px; height: 14px; border: 0; color: #CD3A85; font-family: Arial, Helvetica, sans-serif; font-size: 10px;"></td>
-<td style="padding: 0; vertical-align: top; font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif; font-size: 13px; line-height: 21px; font-weight: 500; color: #141414;"><a href="{{ siteHref }}" style="color: #141414; text-decoration: none;">{{ website }}</a></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div style="display: inline-block; width: 264px; padding: 0 0 24px 0; vertical-align: middle;"><a href="{{ siteHref }}" style="text-decoration: none;"><img src="email-assets/brand-box.png" data-sig-asset="brand-box.png" width="264" height="232" alt="AnimalOOO" style="display: block; width: 264px; height: 232px; border: 0; color: #CD3A85; font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold;"></a></div>
-</div>
+<div ref="{{ sigRef }}" onClick="{{ onPreviewClick }}"></div>
 </div>
 <p style="margin: 4px 0 0; font-size: 14px; line-height: 1.5; color: #7E5E53; text-wrap: pretty;">Texten är satt i Plus Jakarta Sans. Mottagare som inte har typsnittet ser Arial i stället. Den cerise rutan med logotyp och djur är en bild.</p>
 </div>
@@ -224,41 +206,76 @@ a:hover { color: #141414; }
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;website&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;animal.ooo&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;imageHost&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;defaultApp&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;Gmail&quot;, &quot;Outlook&quot;, &quot;Apple Mail&quot;], &quot;default&quot;: &quot;Gmail&quot;, &quot;tsType&quot;: &quot;string&quot;}}">
+// Staff photos are uploaded to Cloudinary so every mail app can show them from a normal https URL (README §4.2).
+// Fill in the account's cloud name and the name of an *unsigned* upload preset. Until then the page shows a setup note.
+const PHOTO_CLOUD = 'vugrs1yj';
+const PHOTO_PRESET = 'animalooo-signatur';
+
 const SAMPLE = { name: 'Anna Lindqvist', title: 'Avelsgenetiker', phone: '+46 70 123 45 67', email: 'anna.lindqvist@animal.ooo' };
 const KEY = 'animalooo-signatur-v4';
 const OLD_SAMPLE = { name: 'Anna Lindqvist', title: 'Breeding geneticist', phone: '+46 70 123 45 67', email: 'anna.lindqvist@animal.ooo' };
-const SAVED = ['name', 'title', 'phone', 'email', 'photoMode', 'photo', 'app'];
+const SAVED = ['name', 'title', 'phone', 'email', 'photoMode', 'photo', 'photoUrl', 'app'];
 const APPS = { 'Gmail': 'gmail', 'Outlook': 'outlook', 'Apple Mail': 'apple' };
-const INK = '#141414', SNOW = '#FFFCFC', WHITE = '#FFFFFF', CERISE = '#CD3A85';
+const INK = '#141414', SNOW = '#FFFCFC', WHITE = '#FFFFFF', CERISE = '#CD3A85', CERISE_DARK = '#A82F6D', BROWN = '#7E5E53';
 const PHOTO = 80, RING = 6;
 const DEFAULT_HOST = 'https://alexandrauh.github.io/AnimalOOO-signatur/email-assets';
+const FONT = "'Plus Jakarta Sans', Arial, Helvetica, sans-serif";
+const WAIT = 'Vänta lite, ditt foto laddas upp.';
+const UPLOAD_FAILED = 'Fotot kunde inte laddas upp. Klicka på Försök igen under Profilbild, eller välj Utan foto.';
+const IS_MAC = /Mac|iPhone|iPad|iPod/i.test(navigator.platform || navigator.userAgent || '');
 
-const CRC = (() => { const t = new Uint32Array(256); for (let n = 0; n < 256; n++) { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; } return t; })();
-function crc32(bytes) { let c = 0xFFFFFFFF; for (let i = 0; i < bytes.length; i++) c = CRC[(c ^ bytes[i]) & 0xFF] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; }
+function esc(v) { return String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+
+// tel: links need a plain international number: "+46 (0)70-123 45 67" and "0046 70…" both become +4670…
+function telNumber(phone) { return phone.replace(/\(0\)/g, '').replace(/[^\d+]/g, '').replace(/^00/, '+').replace(/^\+460/, '+46'); }
+
 function dataUrlBytes(url) { const bin = atob(url.split(',')[1]); const b = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) b[i] = bin.charCodeAt(i); return b; }
-function pngWithDpi(url, dpi) {
-  const src = dataUrlBytes(url), ppm = Math.round(dpi / 0.0254);
-  const chunk = new Uint8Array(21), dv = new DataView(chunk.buffer);
-  dv.setUint32(0, 9); chunk.set([112, 72, 89, 115], 4); dv.setUint32(8, ppm); dv.setUint32(12, ppm); chunk[16] = 1;
-  dv.setUint32(17, crc32(chunk.subarray(4, 17)));
-  const view = new DataView(src.buffer), parts = [src.subarray(0, 8)];
-  let off = 8, inserted = false;
-  while (off + 8 <= src.length) {
-    const len = view.getUint32(off), type = String.fromCharCode(src[off + 4], src[off + 5], src[off + 6], src[off + 7]), end = off + 12 + len;
-    if (type !== 'pHYs') parts.push(src.subarray(off, end));
-    if (type === 'IHDR' && !inserted) { parts.push(chunk); inserted = true; }
-    off = end;
+
+// The signature. The preview and the copied HTML both come from here, so they can't drift apart.
+// Tables and inline styles only. Every text cell sets its own font, size, line height and colour, because
+// mail editors drop "redundant" parent styles on paste. The root is a table so a paste next to existing
+// text can't merge it into that line. The two inline-block columns sit side by side from 560 px and stack
+// (text, then the cerise box) on phones; font-size:0 on their cell removes the gap between them.
+function signatureHtml(d) {
+  const T = 'cellpadding="0" cellspacing="0" border="0" role="presentation"';
+  const img = (src, w, h, alt, altStyle = '') => `<img src="${esc(src)}" width="${w}" height="${h}" alt="${esc(alt)}" border="0" style="display:block; width:${w}px; height:${h}px; border:0;${altStyle}">`;
+  const text = (size, lh, weight, color) => `font-family:${FONT}; font-size:${size}px; line-height:${lh}px; font-weight:${weight}; color:${color};`;
+  // No vertical padding in contact rows (classic Outlook gives every cell in a row the largest one), and the
+  // icon-to-text gap is padding on the text cell so a long e-mail address can't squeeze it away.
+  const contact = (icon, alt, href, label) =>
+    `<tr><td width="14" height="21" valign="middle" style="padding:0; width:14px; height:21px; font-size:0; line-height:21px;">${img(d.asset(icon), 14, 14, alt)}</td>` +
+    `<td valign="middle" style="padding:0 0 0 8px; ${text(13, 21, 500, INK)}"><a href="${esc(href)}" style="color:${INK}; text-decoration:none;">${esc(label)}</a></td></tr>`;
+
+  const rows = [];
+  if (d.photoUrl) {
+    rows.push(`<tr><td style="padding:0 0 20px 0; font-size:0; line-height:0;">${img(d.photoUrl, PHOTO, PHOTO, d.name)}</td></tr>`);
+  } else if (d.photoPlaceholder) {
+    // Preview only: the clickable "add photo" circle. Never part of the copied HTML.
+    rows.push(`<tr><td style="padding:0 0 20px 0;"><div data-pick-photo="1" title="Lägg till foto" style="width:${PHOTO}px; height:${PHOTO}px; box-sizing:border-box; border-radius:50%; border:${RING}px solid ${CERISE}; display:flex; align-items:center; justify-content:center; text-align:center; cursor:pointer; font-family:${FONT}; font-size:11px; line-height:1.2; font-weight:600; color:${BROWN};">Lägg till<br>foto</div></td></tr>`);
   }
-  return new Blob(parts, { type: 'image/png' });
+  rows.push(`<tr><td style="padding:0; ${text(24, 30, 700, INK)} letter-spacing:-0.01em;">${esc(d.name)}</td></tr>`);
+  rows.push(`<tr><td style="padding:0 0 16px 0; ${text(14, 20, 600, CERISE)}">${esc(d.title)}</td></tr>`);
+  const contacts = [];
+  if (d.phone) contacts.push(contact('icon-phone-v2.png', 'Telefon', 'tel:' + telNumber(d.phone), d.phone));
+  contacts.push(contact('icon-mail-v2.png', 'E-post', 'mailto:' + d.email, d.email));
+  contacts.push(contact('icon-web-v2.png', 'Webb', 'https://' + d.site, d.site));
+  rows.push(`<tr><td style="padding:0 0 24px 0;"><table ${T} style="border-collapse:collapse;">${contacts.join('')}</table></td></tr>`);
+
+  // Spacing lives in table cells (Outlook ignores padding on divs); the 28px gutter only matters side by side.
+  const left = `<div style="display:inline-block; width:268px; padding:0 28px 0 0; vertical-align:middle;"><table ${T} width="268" style="border-collapse:collapse; width:268px;">${rows.join('')}</table></div>`;
+  const right = `<div style="display:inline-block; width:264px; padding:0 0 24px 0; vertical-align:middle;"><a href="https://${esc(d.site)}" style="text-decoration:none;">${img(d.asset('brand-box.png'), 264, 232, 'AnimalOOO', ` font-family:Arial, Helvetica, sans-serif; font-size:16px; line-height:20px; font-weight:bold; color:${CERISE};`)}</a></div>`;
+  return `<table ${T} style="border-collapse:collapse;"><tr><td style="padding:0; font-size:0; line-height:0;">${left}${right}</td></tr></table>`;
 }
 
 class Component extends DCLogic {
-  state = { name: '', title: '', phone: '', email: '', photoMode: 'with', photo: null, ringed: null, app: null, status: '', statusKind: 'ok', copied: false, stacked: false };
+  state = { name: '', title: '', phone: '', email: '', photoMode: 'with', photo: null, photoUrl: null, ringed: null, ringedFor: null, upload: 'idle', photoError: '', app: null, status: '', statusKind: 'ok', copied: false, stacked: false };
   sigRef = React.createRef();
   fileRef = React.createRef();
   mainRef = React.createRef();
   formColRef = React.createRef();
   previewColRef = React.createRef();
+  deleteTokens = {};
+  usedUrls = new Set();
 
   photoRef = (el) => {
     const p = this.state.ringed;
@@ -273,23 +290,31 @@ class Component extends DCLogic {
   };
 
   componentDidMount() {
-    window.animaloooSignatureHtml = () => this.emailHtml();
+    window.animaloooSignatureHtml = () => signatureHtml(this.emailData());
     document.addEventListener('copy', this.onDocCopy);
     if (window.ResizeObserver && this.mainRef.current) {
       this.ro = new ResizeObserver(this.checkStacked);
       this.ro.observe(this.mainRef.current);
     }
     this.checkStacked();
+    this.renderPreview();
     try {
       const cur = localStorage.getItem(KEY);
       const s = JSON.parse(cur || 'null');
       if (s && typeof s === 'object') {
         const next = {};
+        // Old versions saved the pre-filled sample person; drop those values, but only when the whole record
+        // is the sample, so a real "Avelsgenetiker" survives a reload.
+        const isSample = k => s[k] === OLD_SAMPLE[k] || s[k] === SAMPLE[k];
+        const prefilled = Object.keys(OLD_SAMPLE).filter(k => s[k]).every(isSample);
         SAVED.forEach(k => {
           if (!(k in s)) return;
-          if (k in OLD_SAMPLE && (s[k] === OLD_SAMPLE[k] || s[k] === SAMPLE[k])) return;
+          if (k in OLD_SAMPLE && prefilled && isSample(k)) return;
           next[k] = s[k];
         });
+        // A saved photo without an upload URL (from v1, or a failed upload) is dropped instead of being
+        // uploaded behind the person's back; they pick it again if they want it.
+        if (!next.photo || !next.photoUrl) { next.photo = null; next.photoUrl = null; }
         this.lastSaved = cur;
         this.setState(next);
       }
@@ -303,13 +328,15 @@ class Component extends DCLogic {
     if (ringKey !== this.ringFor) {
       this.ringFor = ringKey;
       if (!s.photo) {
-        if (s.ringed) this.setState({ ringed: null });
+        if (s.ringed) this.setState({ ringed: null, ringedFor: null });
       } else {
         const src = s.photo;
-        this.ringify(src, PHOTO, 2).then(url => { if (this.state.photo === src) this.setState({ ringed: url }); }, () => {});
+        this.ringify(src, PHOTO, 2).then(url => { if (this.state.photo === src) this.setState({ ringed: url, ringedFor: src }); }, () => {});
       }
     }
-    if (s.ringed) document.querySelectorAll('img[data-sig-photo-img], img[data-photo-thumb]').forEach(this.photoRef);
+    if (s.photoMode === 'with' && s.photo && s.ringedFor === s.photo && !s.photoUrl && s.upload === 'idle' && this.photoHost()) this.uploadPhoto();
+    if (s.ringed) document.querySelectorAll('img[data-photo-thumb]').forEach(this.photoRef);
+    this.renderPreview();
     if (!this.restored) return;
     const out = {};
     SAVED.forEach(k => { out[k] = s[k]; });
@@ -337,7 +364,52 @@ class Component extends DCLogic {
 
   assetUrl(file) { return this.imageHost() + '/' + file; }
 
+  photoHost() {
+    const cloud = PHOTO_CLOUD.trim(), preset = PHOTO_PRESET.trim();
+    return cloud && preset ? { cloud, preset } : null;
+  }
+
   setStatus(status, statusKind) { this.setState({ status, statusKind, copied: false }); }
+
+  // What gets copied: the person's real details and the uploaded photo's URL.
+  emailData() {
+    const s = this.state;
+    return {
+      name: s.name.trim(), title: s.title.trim(), phone: s.phone.trim(), email: s.email.trim(), site: this.site(),
+      photoUrl: s.photoMode === 'with' ? s.photoUrl : null,
+      asset: (f) => this.assetUrl(f),
+    };
+  }
+
+  // What the preview shows: sample values for empty fields and the local photo, so it updates instantly.
+  previewData() {
+    const s = this.state, withPhoto = s.photoMode === 'with';
+    const pristine = !(s.name + s.title + s.phone + s.email).trim();
+    return {
+      name: s.name.trim() || SAMPLE.name,
+      title: s.title.trim() || SAMPLE.title,
+      phone: s.phone.trim() || (pristine ? SAMPLE.phone : ''),
+      email: s.email.trim() || SAMPLE.email,
+      site: this.site(),
+      photoUrl: withPhoto ? s.ringed : null,
+      photoPlaceholder: withPhoto && !s.ringed,
+      asset: (f) => 'email-assets/' + f,
+    };
+  }
+
+  renderPreview() {
+    const el = this.sigRef.current;
+    if (!el) return;
+    const html = signatureHtml(this.previewData());
+    if (html !== this.previewHtml) {
+      this.previewHtml = html;
+      el.innerHTML = html;
+    }
+  }
+
+  onPreviewClick = (e) => {
+    if (e.target.closest && e.target.closest('[data-pick-photo]')) this.pickPhoto();
+  };
 
   ringify(src, size, k) {
     return new Promise((resolve, reject) => {
@@ -366,6 +438,76 @@ class Component extends DCLogic {
     });
   }
 
+  // Uploads the ringed 160 px PNG (shown at 80 px, sharp on Retina). Each upload gets a new URL, so
+  // emails that were already sent keep showing the photo they were sent with. Only the latest request
+  // (uploadSeq) may change state; a superseded upload is deleted again.
+  uploadPhoto() {
+    const s = this.state, host = this.photoHost(), src = s.photo;
+    if (s.photoMode !== 'with' || !host || !src || !s.ringed || this.uploadingFor === src) return;
+    const seq = this.uploadSeq = (this.uploadSeq || 0) + 1;
+    this.uploadingFor = src;
+    this.setState({ upload: 'busy' });
+    const fd = new FormData();
+    fd.append('file', new Blob([dataUrlBytes(s.ringed)], { type: 'image/png' }), 'signaturfoto.png');
+    fd.append('upload_preset', host.preset);
+    fd.append('tags', 'signatur');
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 30000);
+    fetch('https://api.cloudinary.com/v1_1/' + encodeURIComponent(host.cloud) + '/image/upload', { method: 'POST', body: fd, signal: ctrl.signal })
+      .then(r => r.json().catch(() => ({})).then(j => {
+        if (!r.ok || !/^https:\/\//.test(j.secure_url || '')) throw new Error((j.error && j.error.message) || 'HTTP ' + r.status);
+        if (j.delete_token) this.deleteTokens[j.secure_url] = { token: j.delete_token, at: Date.now() };
+        return j.secure_url;
+      }))
+      .then(url => {
+        if (seq !== this.uploadSeq || this.state.photo !== src) return this.discardUpload(url);
+        const next = { photoUrl: url, upload: 'idle' };
+        if (this.state.status === WAIT) Object.assign(next, { status: 'Fotot är klart. Klicka på Kopiera signaturen igen.', statusKind: 'ok' });
+        this.setState(next);
+      }, err => {
+        console.warn('Fotouppladdningen misslyckades:', err);
+        if (seq !== this.uploadSeq || this.state.photo !== src || this.state.photoUrl) return;
+        const next = { upload: 'error' };
+        if (this.state.status === WAIT) Object.assign(next, { status: UPLOAD_FAILED, statusKind: 'error' });
+        this.setState(next);
+      })
+      .then(() => {
+        clearTimeout(timer);
+        if (seq === this.uploadSeq) this.uploadingFor = null;
+      });
+  }
+
+  // Deletes an upload that was never copied into a signature (wrong file, replaced, removed), using the
+  // short-lived delete token Cloudinary returns when the preset has "Return delete token" on.
+  discardUpload(url) {
+    const t = url && this.deleteTokens[url], host = this.photoHost();
+    if (!t || !host || this.usedUrls.has(url)) return;
+    delete this.deleteTokens[url];
+    if (Date.now() - t.at > 9 * 60 * 1000) return;
+    const fd = new FormData();
+    fd.append('token', t.token);
+    fetch('https://api.cloudinary.com/v1_1/' + encodeURIComponent(host.cloud) + '/delete_by_token', { method: 'POST', body: fd }).catch(() => {});
+  }
+
+  // Stops any upload in flight and drops the current photo's upload if it was never used.
+  dropUpload() {
+    this.uploadSeq = (this.uploadSeq || 0) + 1;
+    this.uploadingFor = null;
+    this.discardUpload(this.state.photoUrl);
+  }
+
+  markUsed() {
+    const s = this.state;
+    if (s.photoMode === 'with' && s.photoUrl) this.usedUrls.add(s.photoUrl);
+  }
+
+  retryUpload = () => this.setState({ upload: 'idle', status: '' });
+
+  removePhoto = () => {
+    this.dropUpload();
+    this.setState({ photo: null, photoUrl: null, upload: 'idle', photoError: '', status: '' });
+  };
+
   pickPhoto = () => { if (this.fileRef.current) this.fileRef.current.click(); };
 
   onFile = (e) => {
@@ -385,26 +527,14 @@ class Component extends DCLogic {
       x.fillRect(0, 0, 320, 320);
       x.drawImage(img, sx, sy, s, s, 0, 0, 320, 320);
       URL.revokeObjectURL(url);
-      this.setState({ photo: c.toDataURL('image/jpeg', 0.88), photoMode: 'with', status: '' });
+      this.dropUpload();
+      this.setState({ photo: c.toDataURL('image/jpeg', 0.88), photoUrl: null, upload: 'idle', photoError: '', photoMode: 'with', status: '' });
     };
-    img.onerror = () => { URL.revokeObjectURL(url); this.setStatus('Filen gick inte att öppna. Prova ett foto i JPG- eller PNG-format.', 'error'); };
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      this.setState({ photoError: 'Filen gick inte att öppna. Välj ett foto i JPG- eller PNG-format.', status: '' });
+    };
     img.src = url;
-  };
-
-  downloadPhoto = () => {
-    if (!this.state.photo) return this.setStatus('Ladda upp ditt foto först (steg 02).', 'error');
-    const apple = this.appKey() === 'apple';
-    this.ringify(this.state.photo, PHOTO, apple ? 2 : 1).then(url => {
-      const blob = apple ? pngWithDpi(url, 144) : new Blob([dataUrlBytes(url)], { type: 'image/png' });
-      const href = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = href;
-      a.download = 'signaturfoto.png';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      setTimeout(() => URL.revokeObjectURL(href), 4000);
-    }, () => {});
   };
 
   validate() {
@@ -413,7 +543,11 @@ class Component extends DCLogic {
     if (!s.title.trim()) return 'Fyll i din titel först.';
     if (!email) return 'Fyll i din e-postadress först.';
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return 'Kontrollera e-postadressen, den ser ofullständig ut.';
-    if (s.photoMode === 'with' && !s.ringed) return 'Ladda upp ett foto först, eller välj Utan foto.';
+    if (s.photoMode === 'with') {
+      if (!this.photoHost()) return 'Det går inte att lägga till foto än. Välj Utan foto.';
+      if (!s.photo) return 'Ladda upp ett foto först, eller välj Utan foto.';
+      if (!s.photoUrl) return s.upload === 'error' ? UPLOAD_FAILED : WAIT;
+    }
     return null;
   }
 
@@ -422,67 +556,9 @@ class Component extends DCLogic {
     return [s.name.trim(), s.title.trim(), s.phone.trim() && 'T ' + s.phone.trim(), 'E ' + s.email.trim(), 'W ' + this.site()].filter(Boolean).join('\n');
   }
 
-  emailHtml() {
-    const src = this.sigRef.current;
-    if (!src) return '';
-    const s = this.state;
-    const root = src.cloneNode(true);
-    root.querySelectorAll('[data-sig-ui]').forEach(n => n.remove());
-    if (s.photoMode !== 'with') root.querySelectorAll('[data-sig-photo-cell]').forEach(n => n.remove());
-    if (!s.phone.trim()) root.querySelectorAll('[data-sig-phone-row]').forEach(n => n.remove());
-    root.querySelectorAll('img').forEach(img => {
-      const asset = img.getAttribute('data-sig-asset');
-      if (img.hasAttribute('data-sig-photo-img')) {
-        img.setAttribute('src', this.assetUrl('photo-placeholder.png'));
-        img.setAttribute('alt', 'Ditt foto');
-      } else if (asset) {
-        img.setAttribute('src', this.assetUrl(asset));
-      }
-      img.setAttribute('border', '0');
-    });
-    const hex = (inner) => {
-      const p = inner.split(/[\s,\/]+/).filter(Boolean).map(parseFloat);
-      if (p.length === 4 && p[3] === 0) return 'transparent';
-      return '#' + p.slice(0, 3).map(v => Math.round(v).toString(16).padStart(2, '0')).join('').toUpperCase();
-    };
-    const DROP = ['class', 'role', 'contenteditable', 'spellcheck', 'tabindex', 'draggable', 'aria-label'];
-    [root, ...root.querySelectorAll('*')].forEach(el => {
-      [...el.attributes].forEach(a => { if (a.name.startsWith('data-') || DROP.includes(a.name)) el.removeAttribute(a.name); });
-      const tag = el.tagName;
-      if (tag === 'TABLE') {
-        el.setAttribute('cellpadding', '0');
-        el.setAttribute('cellspacing', '0');
-        el.setAttribute('border', '0');
-        el.setAttribute('role', 'presentation');
-        const w = el.style.width;
-        if (/px$/.test(w)) el.setAttribute('width', String(parseInt(w, 10)));
-        else if (w === '100%') el.setAttribute('width', '100%');
-      }
-      if (tag === 'TD') {
-        if (el.style.verticalAlign) el.setAttribute('valign', el.style.verticalAlign);
-        if (el.style.textAlign) el.setAttribute('align', el.style.textAlign);
-        const w = el.style.width;
-        if (/px$/.test(w) && parseInt(w, 10) > 0) el.setAttribute('width', String(parseInt(w, 10)));
-        const hh = el.style.height;
-        if (/px$/.test(hh) && parseInt(hh, 10) > 0) el.setAttribute('height', String(parseInt(hh, 10)));
-        const bg = el.style.backgroundColor.match(/rgba?\(([^)]*)\)/);
-        if (bg) el.setAttribute('bgcolor', hex(bg[1]));
-      }
-      if (tag === 'TR' && el.style.display) el.style.removeProperty('display');
-      let st = el.getAttribute('style');
-      if (st) {
-        st = st.replace(/rgba?\(([^)]*)\)/g, (m, inner) => hex(inner)).replace(/"/g, "'");
-        if (/line-height/.test(st)) st = 'mso-line-height-rule: exactly; ' + st;
-        el.setAttribute('style', st);
-      } else if (st === '') {
-        el.removeAttribute('style');
-      }
-    });
-    const walker = document.createTreeWalker(root, NodeFilter.SHOW_COMMENT);
-    const comments = [];
-    while (walker.nextNode()) comments.push(walker.currentNode);
-    comments.forEach(c => c.remove());
-    return root.outerHTML;
+  copiedMessage() {
+    const where = { gmail: 'Gmail', outlook: 'Outlook', apple: 'Mail' }[this.appKey()];
+    return 'Kopierad. Klistra nu in den i ' + where + ' enligt stegen nedan.';
   }
 
   selectPreview() {
@@ -507,14 +583,28 @@ class Component extends DCLogic {
     if (flip) this.copiedTimer = setTimeout(() => this.setState({ copied: false }), 2500);
   }
 
+  // Any copy that includes the preview (Cmd/Ctrl + C, right-click > Kopiera, or the "Ett steg kvar"
+  // fallback) gets the clean email HTML. The browser's own copy of the preview would carry the local
+  // photo and sample values, and in Safari a WebArchive that makes Apple Mail attach every image.
   onDocCopy = (e) => {
-    const p = this.pending, el = this.sigRef.current, sel = window.getSelection();
-    if (!p) return;
+    if (this.selfCopy) return;
+    const el = this.sigRef.current, sel = window.getSelection();
+    if (!el || !sel || !sel.rangeCount || !sel.getRangeAt(0).intersectsNode(el)) return;
+    const p = this.pending;
     this.pending = null;
-    if (!el || !sel || !sel.rangeCount || !el.contains(sel.getRangeAt(0).commonAncestorContainer)) return;
-    this.putOnClipboard(e, p.html, p.text);
-    sel.removeAllRanges();
-    this.onCopied(p.msg, p.flip);
+    if (p) {
+      this.putOnClipboard(e, p.html, p.text);
+      sel.removeAllRanges();
+      return this.onCopied(p.msg, p.flip);
+    }
+    const err = this.validate();
+    if (err) {
+      e.preventDefault();
+      return this.setStatus(err, 'error');
+    }
+    this.markUsed();
+    this.putOnClipboard(e, signatureHtml(this.emailData()), this.plainText());
+    this.onCopied(this.copiedMessage(), true);
   };
 
   copyThen(html, text, msg, flip) {
@@ -523,7 +613,7 @@ class Component extends DCLogic {
       if (ok) return this.onCopied(msg, flip);
       this.pending = { html, text, msg, flip };
       this.selectPreview();
-      this.setStatus('Ett steg kvar: tryck Ctrl + C (Cmd + C på Mac) för att kopiera klart.', 'ok');
+      this.setStatus('Ett steg kvar: tryck ' + (IS_MAC ? 'Cmd' : 'Ctrl') + ' + C för att kopiera klart.', 'ok');
     });
   }
 
@@ -532,7 +622,9 @@ class Component extends DCLogic {
     const handler = (e) => { this.putOnClipboard(e, html, text); done = true; };
     document.addEventListener('copy', handler);
     const sel = this.selectPreview();
+    this.selfCopy = true;
     try { document.execCommand('copy'); } catch (err) {}
+    this.selfCopy = false;
     document.removeEventListener('copy', handler);
     if (sel) sel.removeAllRanges();
     if (done) return Promise.resolve(true);
@@ -547,18 +639,27 @@ class Component extends DCLogic {
   copySignature = () => {
     const err = this.validate();
     if (err) return this.setStatus(err, 'error');
-    const where = { gmail: 'Gmail', outlook: 'Outlook', apple: 'Mail' }[this.appKey()];
-    const msg = this.state.photoMode === 'with' ? 'Kopierad. Följ stegen nedan för att klistra in den och lägga till ditt foto i ' + where + '.' : 'Kopierad. Klistra nu in den i ' + where + ' enligt stegen nedan.';
-    const hosted = !!this.imageHost();
-    const warn = hosted ? '' : ' Obs! Bilderna syns bara i mejlen om du kopierar från den publicerade sidan.';
-    this.copyThen(this.emailHtml(), this.plainText(), msg + warn, true);
+    this.markUsed();
+    this.copyThen(signatureHtml(this.emailData()), this.plainText(), this.copiedMessage(), true);
   };
 
   copyCode = () => {
     const err = this.validate();
     if (err) return this.setStatus(err, 'error');
-    this.copyThen(null, this.emailHtml(), 'HTML-koden är kopierad.', false);
+    this.markUsed();
+    this.copyThen(null, signatureHtml(this.emailData()), 'HTML-koden är kopierad.', false);
   };
+
+  photoStatus() {
+    const s = this.state;
+    if (s.photoMode !== 'with') return null;
+    if (s.photoError) return [s.photoError, CERISE_DARK];
+    if (!s.photo) return null;
+    if (!this.photoHost()) return ['Fotouppladdning är inte inställd än, så fotot kan inte komma med.', CERISE_DARK];
+    if (s.photoUrl) return ['Fotot är uppladdat och klart.', BROWN];
+    if (s.upload === 'error') return ['Fotot kunde inte laddas upp.', CERISE_DARK];
+    return ['Laddar upp fotot …', BROWN];
+  }
 
   renderVals() {
     const s = this.state, app = this.appKey(), site = this.site();
@@ -570,46 +671,42 @@ class Component extends DCLogic {
     const [outlookBg, outlookFg] = seg(app === 'outlook');
     const [appleBg, appleFg] = seg(app === 'apple');
     const set = (k) => (e) => this.setState({ [k]: e.target.value, status: '' });
-    const pristine = !(s.name + s.title + s.phone + s.email).trim();
-    const displayPhone = s.phone.trim() || (pristine ? SAMPLE.phone : '');
-    const displayEmail = s.email.trim() || SAMPLE.email;
+    const ps = this.photoStatus();
+    const mod = IS_MAC ? 'Cmd' : 'Ctrl';
     return {
       headerProps: { style: { flexWrap: 'wrap', height: 'auto', minHeight: 48, rowGap: 12, columnGap: 24, color: CERISE } },
       needsHost: !this.imageHost(),
+      needsPhotoHost: !this.photoHost(),
       name: s.name, title: s.title, phone: s.phone, email: s.email, website: site,
       onName: set('name'), onTitle: set('title'), onPhone: set('phone'), onEmail: set('email'),
-      displayName: s.name.trim() || SAMPLE.name,
-      displayTitle: s.title.trim() || SAMPLE.title,
-      displayEmail, displayPhone,
-      telHref: 'tel:' + displayPhone.replace(/[^\d+]/g, ''),
-      mailHref: 'mailto:' + displayEmail,
-      siteHref: 'https://' + site,
-      phoneRowDisplay: displayPhone ? 'table-row' : 'none',
       withPhoto, withoutPhoto: !withPhoto,
       hasPhoto: withPhoto && !!s.ringed,
       noPhotoYet: withPhoto && !s.ringed,
       photoRef: this.photoRef,
       uploadLabel: s.photo ? 'Byt foto' : 'Ladda upp foto',
       photoOnBg, photoOnFg, photoOffBg, photoOffFg,
-      choosePhoto: () => this.setState({ photoMode: 'with', status: '' }),
-      chooseNoPhoto: () => this.setState({ photoMode: 'without', status: '' }),
+      choosePhoto: () => this.setState({ photoMode: 'with', photoError: '', status: '' }),
+      chooseNoPhoto: () => this.setState({ photoMode: 'without', photoError: '', status: '' }),
       pickPhoto: this.pickPhoto, onFile: this.onFile, fileRef: this.fileRef,
-      removePhoto: () => this.setState({ photo: null, status: '' }),
-      downloadPhoto: this.downloadPhoto,
+      removePhoto: this.removePhoto,
+      hasPhotoStatus: !!ps,
+      photoStatus: ps ? ps[0] : '',
+      photoStatusColor: ps ? ps[1] : BROWN,
+      uploadFailed: withPhoto && !!s.photo && !s.photoUrl && s.upload === 'error',
+      retryUpload: this.retryUpload,
       isGmail: app === 'gmail', isOutlook: app === 'outlook', isApple: app === 'apple',
       gmailBg, gmailFg, outlookBg, outlookFg, appleBg, appleFg,
       pickGmail: () => this.setState({ app: 'gmail', status: '' }),
       pickOutlook: () => this.setState({ app: 'outlook', status: '' }),
       pickApple: () => this.setState({ app: 'apple', status: '' }),
-      gmailLastNum: withPhoto ? '5' : '4',
-      outlookLastNum: withPhoto ? '5' : '4',
-      appleLastNum: withPhoto ? '6' : '5',
+      pasteKeys: mod + ' + V',
+      selectAllKeys: mod + ' + A',
       copySignature: this.copySignature, copyCode: this.copyCode,
       copyIcon: s.copied ? 'ClipboardCheck' : 'ClipboardCopy',
       copyLabel: s.copied ? 'Kopierad' : 'Kopiera signaturen',
       status: s.status,
-      statusColor: s.statusKind === 'error' ? '#A82F6D' : INK,
-      sigRef: this.sigRef,
+      statusColor: s.statusKind === 'error' ? CERISE_DARK : INK,
+      sigRef: this.sigRef, onPreviewClick: this.onPreviewClick,
       mainRef: this.mainRef, formColRef: this.formColRef, previewColRef: this.previewColRef,
       previewPos: s.stacked ? 'static' : 'sticky',
     };
