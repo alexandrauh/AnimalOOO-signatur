@@ -39,7 +39,7 @@ a:hover { color: #141414; }
 
 <div style="margin-top: 64px; max-width: 640px;">
 <h1 style="margin: 0; font-size: 40px; line-height: 1.2; font-weight: 600; letter-spacing: -0.01em;">Din e-postsignatur</h1>
-<p style="margin: 12px 0 0; font-size: 18px; line-height: 1.5; font-weight: 500; color: #7E5E53; text-wrap: pretty;">Fyll i dina uppgifter, kopiera signaturen och klistra in den i ditt e-postprogram. Ändras något senare fyller du bara i sidan igen och klistrar in på nytt.</p>
+<p style="margin: 12px 0 0; font-size: 18px; line-height: 1.5; font-weight: 500; color: #7E5E53; text-wrap: pretty;">Fyll i dina uppgifter, kopiera signaturen och klistra in den i ditt e-postprogram.</p>
 </div>
 
 <div ref="{{ mainRef }}" style="margin-top: 56px; display: flex; flex-wrap: wrap-reverse; gap: 56px 64px; align-items: flex-end;">
@@ -110,7 +110,8 @@ a:hover { color: #141414; }
 </sc-if>
 </div>
 </sc-if>
-<span style="font-size: 14px; line-height: 1.45; color: #7E5E53; text-wrap: pretty;">Ett tydligt foto av ansiktet blir bäst. Det beskärs till en cirkel åt dig. När du väljer ett foto laddas det direkt upp till bildtjänsten Cloudinary och får en offentlig webbadress, så att det syns för alla som får dina mejl. Vill du att ett uppladdat foto raderas helt, säg till den som ansvarar för signaturerna.</span>
+<span style="font-size: 14px; line-height: 1.45; color: #7E5E53; text-wrap: pretty;">Ett tydligt foto av ansiktet blir bäst. Det beskärs till en cirkel åt dig.</span>
+<span style="font-size: 13px; line-height: 1.45; color: #7E5E53; text-wrap: pretty;">Fotot lagras hos Cloudinary. Kontakta admin om du vill att det raderas.</span>
 </div>
 </div>
 </sc-if>
@@ -129,7 +130,7 @@ a:hover { color: #141414; }
 <button type="button" onClick="{{ pickOutlook }}" aria-pressed="{{ isOutlook }}" style="flex: 1; height: 44px; padding: 0 8px; border: 0; border-left: 1px solid #141414; border-radius: 0; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; background: {{ outlookBg }}; color: {{ outlookFg }};">Outlook</button>
 <button type="button" onClick="{{ pickApple }}" aria-pressed="{{ isApple }}" style="flex: 1; height: 44px; padding: 0 8px; border: 0; border-left: 1px solid #141414; border-radius: 0; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; background: {{ appleBg }}; color: {{ appleFg }};">Apple Mail</button>
 </div>
-<span style="font-size: 14px; line-height: 1.45; color: #7E5E53; text-wrap: pretty;">Gör stegen nedan på datorn. Det går inte att göra i mobilen.</span>
+<span style="font-size: 14px; line-height: 1.45; color: #7E5E53; text-wrap: pretty;">Gör stegen på en dator, inte i mobilen.</span>
 </div>
 
 <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 12px;">
@@ -142,49 +143,50 @@ a:hover { color: #141414; }
 
 <sc-if value="{{ isGmail }}" hint-placeholder-val="{{ true }}">
 <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px;">
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">1</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Öppna Gmail i webbläsaren på datorn. Klicka på kugghjulet uppe till höger och sedan på <strong style="font-weight: 700;">Visa alla inställningar</strong>.</span></li>
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">2</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Scrolla ner till <strong style="font-weight: 700;">Signatur</strong> på fliken Allmänt och klicka på <strong style="font-weight: 700;">Skapa ny</strong>. Ge den valfritt namn.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">1</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Öppna Gmail, klicka på kugghjulet och sedan på <strong style="font-weight: 700;">Visa alla inställningar</strong>.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">2</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Scrolla ner till <strong style="font-weight: 700;">Signatur</strong>, klicka på <strong style="font-weight: 700;">Skapa ny</strong> och ge den ett namn.</span></li>
 <li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">3</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Klicka i signaturrutan, markera allt med <strong style="font-weight: 700;">{{ selectAllKeys }}</strong> och klistra in med <strong style="font-weight: 700;">{{ pasteKeys }}</strong>.</span></li>
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">4</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Under signaturrutan väljer du den nya signaturen både för nya mejl och för svar. Klicka sedan på <strong style="font-weight: 700;">Spara ändringar</strong> längst ner på sidan.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">4</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Välj signaturen för nya mejl och svar under rutan. Klicka på <strong style="font-weight: 700;">Spara ändringar</strong> längst ner.</span></li>
 </ol>
 </sc-if>
 
 <sc-if value="{{ isOutlook }}" hint-placeholder-val="{{ false }}">
 <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px;">
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">1</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Öppna signaturinställningarna. Nya Outlook och Outlook på webben: klicka på kugghjulet uppe till höger, sedan <strong style="font-weight: 700;">Konton</strong> och <strong style="font-weight: 700;">Signaturer</strong>. Klassiska Outlook för Windows: <strong style="font-weight: 700;">Arkiv</strong>, <strong style="font-weight: 700;">Alternativ</strong>, <strong style="font-weight: 700;">E-post</strong>, <strong style="font-weight: 700;">Signaturer</strong>. Outlook på Mac: välj <strong style="font-weight: 700;">Outlook</strong>, <strong style="font-weight: 700;">Inställningar</strong> i menyraden och klicka på <strong style="font-weight: 700;">Signaturer</strong>.</span></li>
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">2</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Klicka på <strong style="font-weight: 700;">Lägg till signatur</strong> (i klassiska Outlook <strong style="font-weight: 700;">Ny</strong>, på Mac <strong style="font-weight: 700;">+</strong>) och ge den valfritt namn.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">1</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Klicka på kugghjulet › <strong style="font-weight: 700;">Konton</strong> › <strong style="font-weight: 700;">Signaturer</strong>. Klassiska Outlook: <strong style="font-weight: 700;">Arkiv</strong> › <strong style="font-weight: 700;">Alternativ</strong> › <strong style="font-weight: 700;">E-post</strong> › <strong style="font-weight: 700;">Signaturer</strong>. På Mac: <strong style="font-weight: 700;">Outlook</strong> › <strong style="font-weight: 700;">Inställningar</strong> › <strong style="font-weight: 700;">Signaturer</strong>.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">2</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Klicka på <strong style="font-weight: 700;">Lägg till signatur</strong> (klassiska Outlook: <strong style="font-weight: 700;">Ny</strong>, Mac: <strong style="font-weight: 700;">+</strong>) och ge den ett namn.</span></li>
 <li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">3</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Klicka i signaturrutan, markera allt med <strong style="font-weight: 700;">{{ selectAllKeys }}</strong> och klistra in med <strong style="font-weight: 700;">{{ pasteKeys }}</strong>.</span></li>
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">4</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Välj att signaturen ska användas för nya meddelanden och för svar. Klicka sedan på <strong style="font-weight: 700;">Spara</strong>. I klassiska Outlook klickar du till sist på <strong style="font-weight: 700;">OK</strong>. På Mac finns ingen Spara-knapp, där stänger du bara fönstret.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">4</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Välj signaturen för nya meddelanden och svar och klicka på <strong style="font-weight: 700;">Spara</strong>. Klassiska Outlook: klicka även på <strong style="font-weight: 700;">OK</strong>. Mac: stäng bara fönstret.</span></li>
 </ol>
 </sc-if>
 
 <sc-if value="{{ isApple }}" hint-placeholder-val="{{ false }}">
 <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px;">
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">1</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Öppna Mail på din Mac och välj <strong style="font-weight: 700;">Mail</strong>, <strong style="font-weight: 700;">Inställningar</strong> i menyraden. Klicka på <strong style="font-weight: 700;">Signaturer</strong>.</span></li>
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">2</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Markera ditt konto i vänsterkolumnen (inte Alla signaturer) och klicka på <strong style="font-weight: 700;">+</strong> under kolumnen i mitten.</span></li>
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">3</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Avmarkera <strong style="font-weight: 700;">Matcha alltid det förvalda mejltypsnittet</strong> under den stora rutan till höger. Gör det innan du klistrar in.</span></li>
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">4</span><span style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 4px;"><span style="text-wrap: pretty;">Klicka i den stora rutan till höger. Markera allt med <strong style="font-weight: 700;">Cmd + A</strong> och klistra in med <strong style="font-weight: 700;">Cmd + V</strong>. Den sparas automatiskt.</span><span style="font-size: 14px; line-height: 1.45; color: #7E5E53; text-wrap: pretty;">Här visas bilderna ofta som frågetecken och den cerise rutan kan hamna under texten. Det är normalt.</span></span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">1</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Öppna Mail och välj <strong style="font-weight: 700;">Mail</strong> › <strong style="font-weight: 700;">Inställningar</strong> › <strong style="font-weight: 700;">Signaturer</strong>.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">2</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Markera ditt konto till vänster (inte Alla signaturer) och klicka på <strong style="font-weight: 700;">+</strong> under mittenkolumnen.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">3</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Avmarkera <strong style="font-weight: 700;">Matcha alltid det förvalda mejltypsnittet</strong> innan du klistrar in.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">4</span><span style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 4px;"><span style="text-wrap: pretty;">Klicka i den stora rutan, markera allt med <strong style="font-weight: 700;">Cmd + A</strong> och klistra in med <strong style="font-weight: 700;">Cmd + V</strong>. Den sparas automatiskt.</span><span style="font-size: 14px; line-height: 1.45; color: #7E5E53; text-wrap: pretty;">Här kan bilderna visas som frågetecken. Det är normalt.</span></span></li>
 <li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">5</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Välj den nya signaturen i menyn <strong style="font-weight: 700;">Välj signatur</strong> längst ner.</span></li>
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">6</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Kontrollera resultatet: öppna ett nytt mejl med <strong style="font-weight: 700;">Cmd + N</strong>. Där ska signaturen synas med alla bilder.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">6</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Öppna ett nytt mejl (<strong style="font-weight: 700;">Cmd + N</strong>) och kontrollera att signaturen syns med bilder.</span></li>
 </ol>
 <details style="border-top: 1px solid #E9DAD4; padding-top: 12px;">
 <summary style="cursor: pointer; font-size: 15px; line-height: 1.5; font-weight: 600; color: #A82F6D;">Fungerar det inte?</summary>
 <ul style="margin: 10px 0 0; padding: 0 0 0 20px; display: flex; flex-direction: column; gap: 8px;">
-<li style="font-size: 15px; line-height: 1.5; text-wrap: pretty;">Klistrade du in innan du avmarkerade rutan i steg 3? Ta bort signaturen med <strong style="font-weight: 700;">–</strong> under mittenkolumnen, skapa en ny och börja om från steg 3.</li>
-<li style="font-size: 15px; line-height: 1.5; text-wrap: pretty;">Syns inga bilder i nya mejl? Öppna <strong style="font-weight: 700;">Integritet</strong> i Mails inställningar och se till att fjärrinnehåll inte blockeras.</li>
-<li style="font-size: 15px; line-height: 1.5; text-wrap: pretty;">Ligger den gamla texten kvar? Klicka i rutan, tryck <strong style="font-weight: 700;">Cmd + A</strong> och klistra in igen.</li>
-<li style="font-size: 15px; line-height: 1.5; text-wrap: pretty;">Kopiera aldrig signaturen från ett mejl du har skickat. Använd alltid knappen <strong style="font-weight: 700;">Kopiera signaturen</strong> här.</li>
+<li style="font-size: 15px; line-height: 1.5; text-wrap: pretty;">Klistrade du in före steg 3? Ta bort signaturen med <strong style="font-weight: 700;">–</strong>, skapa en ny och börja om från steg 3.</li>
+<li style="font-size: 15px; line-height: 1.5; text-wrap: pretty;">Inga bilder i nya mejl? Kontrollera under <strong style="font-weight: 700;">Integritet</strong> att fjärrinnehåll inte blockeras.</li>
+<li style="font-size: 15px; line-height: 1.5; text-wrap: pretty;">Gammal text kvar? Klicka i rutan, tryck <strong style="font-weight: 700;">Cmd + A</strong> och klistra in igen.</li>
+<li style="font-size: 15px; line-height: 1.5; text-wrap: pretty;">Kopiera aldrig signaturen från ett skickat mejl, bara med knappen här.</li>
 </ul>
 </details>
 </sc-if>
 
 <div style="background: #F1E7E3; padding: 20px 24px; display: flex; flex-direction: column; gap: 6px;">
-<span style="font-size: 16px; line-height: 1.5; font-weight: 700;">Ändra dina uppgifter senare</span>
-<span style="font-size: 15px; line-height: 1.5; text-wrap: pretty;">Fyll i den här sidan igen och kopiera signaturen. Klicka i den gamla signaturen i e-postprogrammet, markera allt med <strong style="font-weight: 700;">{{ selectAllKeys }}</strong> och klistra in. Skriv inte om telefonnummer eller e-postadress direkt i e-postprogrammet, för då går länkarna fortfarande till de gamla uppgifterna.</span>
+<span style="font-size: 16px; line-height: 1.5; font-weight: 700;">Hur ändrar jag mina uppgifter senare?</span>
+<span style="font-size: 15px; line-height: 1.5; text-wrap: pretty;">Fyll i sidan igen, kopiera och klistra in över den gamla signaturen (markera allt med <strong style="font-weight: 700;">{{ selectAllKeys }}</strong> först).</span>
+<div style="display: flex; gap: 10px; align-items: flex-start; margin-top: 6px;"><span aria-hidden="true" style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 2px; border-radius: 50%; background: #A82F6D; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 700; text-align: center;">!</span><span style="flex: 1 1 auto; min-width: 0; font-size: 15px; line-height: 1.5; text-wrap: pretty;">Ändra inte telefon eller e-post direkt i e-postprogrammet, då pekar länkarna kvar på de gamla uppgifterna.</span></div>
 </div>
 
 <div style="font-size: 14px; line-height: 1.5; color: #7E5E53; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px;">
-<span>Använder du ett annat e-postprogram? Kopiera signaturen med knappen ovan och klistra in den i programmets signaturinställningar. Behöver programmet HTML-kod, eller ska du lägga in signaturen åt alla?</span>
+<span>Annat e-postprogram? Klistra in signaturen i programmets signaturinställningar. Behövs HTML-kod?</span>
 <button type="button" onClick="{{ copyCode }}" style="padding: 0; background: none; border: 0; font-family: inherit; font-size: 14px; font-weight: 600; color: #A82F6D; text-decoration: underline; text-underline-offset: 3px; cursor: pointer;" style-hover="color: #141414;">Kopiera HTML-koden</button>
 </div>
 </section>
@@ -198,7 +200,7 @@ a:hover { color: #141414; }
 <div style="background: #FFFFFF; padding: 48px clamp(20px, 4vw, 48px); overflow-x: auto;">
 <div ref="{{ sigRef }}" onClick="{{ onPreviewClick }}"></div>
 </div>
-<p style="margin: 4px 0 0; font-size: 14px; line-height: 1.5; color: #7E5E53; text-wrap: pretty;">Texten är satt i Plus Jakarta Sans. Mottagare som inte har typsnittet ser Arial i stället. Den cerise rutan med logotyp och djur är en bild.</p>
+<p style="margin: 4px 0 0; font-size: 14px; line-height: 1.5; color: #7E5E53; text-wrap: pretty;">Mottagare som saknar typsnittet Plus Jakarta Sans ser Arial i stället.</p>
 </div>
 
 </div>
@@ -221,7 +223,7 @@ const PHOTO = 80, RING = 6;
 const DEFAULT_HOST = 'https://alexandrauh.github.io/AnimalOOO-signatur/email-assets';
 const FONT = "'Plus Jakarta Sans', Arial, Helvetica, sans-serif";
 const WAIT = 'Vänta lite, ditt foto laddas upp.';
-const UPLOAD_FAILED = 'Fotot kunde inte laddas upp. Klicka på Försök igen under Profilbild, eller välj Utan foto.';
+const UPLOAD_FAILED = 'Fotot kunde inte laddas upp. Klicka på Försök igen eller välj Utan foto.';
 const IS_MAC = /Mac|iPhone|iPad|iPod/i.test(navigator.platform || navigator.userAgent || '');
 
 function esc(v) { return String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
@@ -558,7 +560,7 @@ class Component extends DCLogic {
 
   copiedMessage() {
     const where = { gmail: 'Gmail', outlook: 'Outlook', apple: 'Mail' }[this.appKey()];
-    return 'Kopierad. Klistra nu in den i ' + where + ' enligt stegen nedan.';
+    return 'Kopierad. Klistra in den i ' + where + ' enligt stegen nedan.';
   }
 
   selectPreview() {
@@ -655,7 +657,7 @@ class Component extends DCLogic {
     if (s.photoMode !== 'with') return null;
     if (s.photoError) return [s.photoError, CERISE_DARK];
     if (!s.photo) return null;
-    if (!this.photoHost()) return ['Fotouppladdning är inte inställd än, så fotot kan inte komma med.', CERISE_DARK];
+    if (!this.photoHost()) return ['Fotouppladdning är inte inställd än.', CERISE_DARK];
     if (s.photoUrl) return ['Fotot är uppladdat och klart.', BROWN];
     if (s.upload === 'error') return ['Fotot kunde inte laddas upp.', CERISE_DARK];
     return ['Laddar upp fotot …', BROWN];
