@@ -154,9 +154,9 @@ a:hover { color: #141414; }
 <li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">1</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Välj <strong style="font-weight: 700;">Mail</strong>, <strong style="font-weight: 700;">Inställningar</strong> i menyraden och klicka på <strong style="font-weight: 700;">Signaturer</strong>.</span></li>
 <li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">2</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Markera ditt konto i vänsterkolumnen och klicka på plustecknet under kolumnen i mitten.</span></li>
 <li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">3</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Avmarkera kryssrutan som gör att signaturen alltid får ditt standardtypsnitt.</span></li>
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">4</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Klicka i signaturrutan till höger och klistra in med Cmd + V. Den sparas automatiskt.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">4</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Klicka i signaturrutan till höger och klistra in med Cmd + V. Den sparas automatiskt. Bilderna kan se trasiga ut här, men de syns när du skriver ett mejl.</span></li>
 <sc-if value="{{ withPhoto }}" hint-placeholder-val="{{ true }}">
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">5</span><span style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 6px;"><span style="text-wrap: pretty;">Byt ut cirkeln <strong style="font-weight: 700;">Ditt foto</strong> mot ditt eget foto: högerklicka på cirkeln och välj <strong style="font-weight: 700;">Klipp ut</strong> (Cut). Öppna sedan mappen Hämtade filer (Downloads) och dra in filen signaturfoto.png till samma plats i signaturen.</span><button type="button" onClick="{{ downloadPhoto }}" style="padding: 0; background: none; border: 0; font-family: inherit; font-size: 15px; font-weight: 600; color: #A82F6D; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; text-align: left;" style-hover="color: #141414;">Ladda ner ditt foto i rätt storlek</button></span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">5</span><span style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 6px;"><span style="text-wrap: pretty;">Byt ut rutan <strong style="font-weight: 700;">Ditt foto</strong> mot ditt eget foto, i den här ordningen: dra först filen signaturfoto.png från mappen Hämtade filer (Downloads) och släpp den precis på rutan <strong style="font-weight: 700;">Ditt foto</strong>. Högerklicka sedan på rutan <strong style="font-weight: 700;">Ditt foto</strong> och välj <strong style="font-weight: 700;">Klipp ut</strong> (Cut).</span><button type="button" onClick="{{ downloadPhoto }}" style="padding: 0; background: none; border: 0; font-family: inherit; font-size: 15px; font-weight: 600; color: #A82F6D; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; text-align: left;" style-hover="color: #141414;">Ladda ner ditt foto i rätt storlek</button></span></li>
 </sc-if>
 <li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">{{ appleLastNum }}</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Välj den i menyn <strong style="font-weight: 700;">Välj signatur</strong> längst ner.</span></li>
 </ol>
@@ -231,6 +231,25 @@ const SAVED = ['name', 'title', 'phone', 'email', 'photoMode', 'photo', 'app'];
 const APPS = { 'Gmail': 'gmail', 'Outlook': 'outlook', 'Apple Mail': 'apple' };
 const INK = '#141414', SNOW = '#FFFCFC', WHITE = '#FFFFFF', CERISE = '#CD3A85';
 const PHOTO = 80, RING = 6;
+
+const CRC = (() => { const t = new Uint32Array(256); for (let n = 0; n < 256; n++) { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; } return t; })();
+function crc32(bytes) { let c = 0xFFFFFFFF; for (let i = 0; i < bytes.length; i++) c = CRC[(c ^ bytes[i]) & 0xFF] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; }
+function dataUrlBytes(url) { const bin = atob(url.split(',')[1]); const b = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) b[i] = bin.charCodeAt(i); return b; }
+function pngWithDpi(url, dpi) {
+  const src = dataUrlBytes(url), ppm = Math.round(dpi / 0.0254);
+  const chunk = new Uint8Array(21), dv = new DataView(chunk.buffer);
+  dv.setUint32(0, 9); chunk.set([112, 72, 89, 115], 4); dv.setUint32(8, ppm); dv.setUint32(12, ppm); chunk[16] = 1;
+  dv.setUint32(17, crc32(chunk.subarray(4, 17)));
+  const view = new DataView(src.buffer), parts = [src.subarray(0, 8)];
+  let off = 8, inserted = false;
+  while (off + 8 <= src.length) {
+    const len = view.getUint32(off), type = String.fromCharCode(src[off + 4], src[off + 5], src[off + 6], src[off + 7]), end = off + 12 + len;
+    if (type !== 'pHYs') parts.push(src.subarray(off, end));
+    if (type === 'IHDR' && !inserted) { parts.push(chunk); inserted = true; }
+    off = end;
+  }
+  return new Blob(parts, { type: 'image/png' });
+}
 
 class Component extends DCLogic {
   state = { name: '', title: '', phone: '', email: '', photoMode: 'with', photo: null, ringed: null, app: null, status: '', statusKind: 'ok', copied: false, stacked: false };
@@ -375,13 +394,17 @@ class Component extends DCLogic {
 
   downloadPhoto = () => {
     if (!this.state.photo) return this.setStatus('Ladda upp ditt foto först (steg 02).', 'error');
-    this.ringify(this.state.photo, PHOTO, 1).then(href => {
+    const apple = this.appKey() === 'apple';
+    this.ringify(this.state.photo, PHOTO, apple ? 2 : 1).then(url => {
+      const blob = apple ? pngWithDpi(url, 144) : new Blob([dataUrlBytes(url)], { type: 'image/png' });
+      const href = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = href;
       a.download = 'signaturfoto.png';
       document.body.appendChild(a);
       a.click();
       a.remove();
+      setTimeout(() => URL.revokeObjectURL(href), 4000);
     }, () => {});
   };
 
