@@ -131,7 +131,7 @@ a:hover { color: #141414; }
 <li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">2</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Scrolla ner till <strong style="font-weight: 700;">Signatur</strong> på fliken Allmänt och klicka på <strong style="font-weight: 700;">Skapa ny</strong>. Ge den valfritt namn.</span></li>
 <li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">3</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Klicka i signaturrutan och klistra in: Ctrl + V, eller Cmd + V på Mac.</span></li>
 <sc-if value="{{ withPhoto }}" hint-placeholder-val="{{ true }}">
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">4</span><span style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 6px;"><span style="text-wrap: pretty;">Gmail tar inte med foton som klistras in, så lägg till ditt för hand: klicka på cirkeln <strong style="font-weight: 700;">Ditt foto</strong> och tryck Delete. Klicka sedan på ikonen Infoga bild, välj <strong style="font-weight: 700;">Ladda upp</strong> och välj ditt foto.</span><button type="button" onClick="{{ downloadPhoto }}" style="padding: 0; background: none; border: 0; font-family: inherit; font-size: 15px; font-weight: 600; color: #A82F6D; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; text-align: left;" style-hover="color: #141414;">Ladda ner ditt foto i rätt storlek</button></span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">4</span><span style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 6px;"><span style="text-wrap: pretty;">Gmail tar inte med foton som klistras in, så lägg till ditt för hand: klicka på cirkeln <strong style="font-weight: 700;">Ditt foto</strong> och tryck på raderingstangenten (⌫ eller Backspace). Klicka sedan på ikonen Infoga bild, välj <strong style="font-weight: 700;">Ladda upp</strong> och välj filen signaturfoto.png.</span><button type="button" onClick="{{ downloadPhoto }}" style="padding: 0; background: none; border: 0; font-family: inherit; font-size: 15px; font-weight: 600; color: #A82F6D; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; text-align: left;" style-hover="color: #141414;">Ladda ner ditt foto i rätt storlek</button></span></li>
 </sc-if>
 <li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">{{ gmailLastNum }}</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Välj längre ner att signaturen ska användas för nya mejl och för svar. Klicka på <strong style="font-weight: 700;">Spara ändringar</strong> längst ner på sidan.</span></li>
 </ol>
@@ -142,7 +142,10 @@ a:hover { color: #141414; }
 <li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">1</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Öppna <strong style="font-weight: 700;">Inställningar</strong> i Outlook, sedan <strong style="font-weight: 700;">Konton</strong> och <strong style="font-weight: 700;">Signaturer</strong>. I klassiska Outlook: Arkiv, Alternativ, E-post, Signaturer.</span></li>
 <li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">2</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Klicka på <strong style="font-weight: 700;">Ny signatur</strong> och ge den valfritt namn.</span></li>
 <li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">3</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Klicka i signaturrutan och klistra in: Ctrl + V, eller Cmd + V på Mac.</span></li>
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">4</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Välj längst ner att den ska användas för nya meddelanden och svar. Klicka sedan på <strong style="font-weight: 700;">Spara</strong>.</span></li>
+<sc-if value="{{ withPhoto }}" hint-placeholder-val="{{ true }}">
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">4</span><span style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 6px;"><span style="text-wrap: pretty;">Byt ut cirkeln <strong style="font-weight: 700;">Ditt foto</strong> mot ditt eget foto: högerklicka på cirkeln och välj <strong style="font-weight: 700;">Klipp ut</strong>. Klicka sedan på bildknappen i signaturverktyget och välj filen signaturfoto.png.</span><button type="button" onClick="{{ downloadPhoto }}" style="padding: 0; background: none; border: 0; font-family: inherit; font-size: 15px; font-weight: 600; color: #A82F6D; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; text-align: left;" style-hover="color: #141414;">Ladda ner ditt foto i rätt storlek</button></span></li>
+</sc-if>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">{{ outlookLastNum }}</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Välj längst ner att den ska användas för nya meddelanden och svar. Klicka sedan på <strong style="font-weight: 700;">Spara</strong>.</span></li>
 </ol>
 </sc-if>
 
@@ -152,7 +155,10 @@ a:hover { color: #141414; }
 <li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">2</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Markera ditt konto i vänsterkolumnen och klicka på plustecknet under kolumnen i mitten.</span></li>
 <li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">3</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Avmarkera kryssrutan som gör att signaturen alltid får ditt standardtypsnitt.</span></li>
 <li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">4</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Klicka i signaturrutan till höger och klistra in med Cmd + V. Den sparas automatiskt.</span></li>
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">5</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Välj den i menyn <strong style="font-weight: 700;">Välj signatur</strong> längst ner.</span></li>
+<sc-if value="{{ withPhoto }}" hint-placeholder-val="{{ true }}">
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">5</span><span style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 6px;"><span style="text-wrap: pretty;">Byt ut cirkeln <strong style="font-weight: 700;">Ditt foto</strong> mot ditt eget foto: högerklicka på cirkeln och välj <strong style="font-weight: 700;">Klipp ut</strong> (Cut). Öppna sedan mappen Hämtade filer (Downloads) och dra in filen signaturfoto.png till samma plats i signaturen.</span><button type="button" onClick="{{ downloadPhoto }}" style="padding: 0; background: none; border: 0; font-family: inherit; font-size: 15px; font-weight: 600; color: #A82F6D; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; text-align: left;" style-hover="color: #141414;">Ladda ner ditt foto i rätt storlek</button></span></li>
+</sc-if>
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.5;"><span style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: #CD3A85; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 600; text-align: center;">{{ appleLastNum }}</span><span style="flex: 1 1 auto; min-width: 0; text-wrap: pretty;">Välj den i menyn <strong style="font-weight: 700;">Välj signatur</strong> längst ner.</span></li>
 </ol>
 </sc-if>
 
@@ -174,10 +180,8 @@ a:hover { color: #141414; }
 <span style="font-size: 14px; line-height: 1.2; color: #7E5E53;">Verklig storlek</span>
 </div>
 <div style="background: #FFFFFF; padding: 48px clamp(20px, 4vw, 48px); overflow-x: auto;">
-<table ref="{{ sigRef }}" style="border-collapse: collapse; border-spacing: 0; width: 560px; font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif; color: #141414;">
-<tbody>
-<tr>
-<td style="padding: 0 28px 0 0; width: 268px; vertical-align: middle;">
+<div ref="{{ sigRef }}" style="max-width: 560px; font-size: 0; line-height: 0;">
+<div style="display: inline-block; width: 268px; padding: 0 28px 24px 0; vertical-align: middle; font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif; font-size: 14px; line-height: 20px; color: #141414;">
 <sc-if value="{{ withPhoto }}" hint-placeholder-val="{{ true }}">
 <div data-sig-photo-cell="1">
 <sc-if value="{{ hasPhoto }}" hint-placeholder-val="{{ false }}">
@@ -208,13 +212,11 @@ a:hover { color: #141414; }
 </tr>
 </tbody>
 </table>
-</td>
-<td style="padding: 0; width: 264px; height: 232px; vertical-align: bottom; background-color: #CD3A85;"><table style="border-collapse: collapse; border-spacing: 0; width: 264px;"><tbody><tr><td style="padding: 24px;"><a href="{{ siteHref }}" style="text-decoration: none;"><img src="email-assets/lockup-white.png" data-sig-asset="lockup-white.png" width="216" height="95" alt="AnimalOOO" style="display: block; width: 216px; height: 95px; border: 0; color: #FFFCFC; font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold;"></a></td></tr></tbody></table></td>
-</tr>
-</tbody>
-</table>
 </div>
-<p style="margin: 4px 0 0; font-size: 14px; line-height: 1.5; color: #7E5E53; text-wrap: pretty;">Texten är satt i Plus Jakarta Sans. Mottagare som inte har typsnittet ser Arial i stället. Logotypen med djuren är en bild.</p>
+<div style="display: inline-block; width: 264px; padding: 0 0 24px 0; vertical-align: middle;"><a href="{{ siteHref }}" style="text-decoration: none;"><img src="email-assets/brand-box.png" data-sig-asset="brand-box.png" width="264" height="232" alt="AnimalOOO" style="display: block; width: 264px; height: 232px; border: 0; color: #CD3A85; font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold;"></a></div>
+</div>
+</div>
+<p style="margin: 4px 0 0; font-size: 14px; line-height: 1.5; color: #7E5E53; text-wrap: pretty;">Texten är satt i Plus Jakarta Sans. Mottagare som inte har typsnittet ser Arial i stället. Den cerise rutan med logotyp och djur är en bild.</p>
 </div>
 
 </div>
@@ -406,11 +408,11 @@ class Component extends DCLogic {
     root.querySelectorAll('[data-sig-ui]').forEach(n => n.remove());
     if (s.photoMode !== 'with') root.querySelectorAll('[data-sig-photo-cell]').forEach(n => n.remove());
     if (!s.phone.trim()) root.querySelectorAll('[data-sig-phone-row]').forEach(n => n.remove());
-    const gmail = this.appKey() === 'gmail';
     root.querySelectorAll('img').forEach(img => {
       const asset = img.getAttribute('data-sig-asset');
       if (img.hasAttribute('data-sig-photo-img')) {
-        if (gmail) { img.setAttribute('src', this.assetUrl('photo-placeholder.png')); img.setAttribute('alt', 'Ditt foto'); }
+        img.setAttribute('src', this.assetUrl('photo-placeholder.png'));
+        img.setAttribute('alt', 'Ditt foto');
       } else if (asset) {
         img.setAttribute('src', this.assetUrl(asset));
       }
@@ -524,7 +526,10 @@ class Component extends DCLogic {
     const err = this.validate();
     if (err) return this.setStatus(err, 'error');
     const where = { gmail: 'Gmail', outlook: 'Outlook', apple: 'Mail' }[this.appKey()];
-    this.copyThen(this.emailHtml(), this.plainText(), 'Kopierad. Klistra nu in den i ' + where + ' enligt stegen nedan.', true);
+    const msg = this.state.photoMode === 'with' ? 'Kopierad. Följ stegen nedan för att klistra in den och lägga till ditt foto i ' + where + '.' : 'Kopierad. Klistra nu in den i ' + where + ' enligt stegen nedan.';
+    const hosted = String(this.props.imageHost ?? '').trim() || /(^|\.)github\.io$/i.test(location.hostname);
+    const warn = hosted ? '' : ' Obs! Bilderna syns bara i mejlen om du kopierar från den publicerade sidan.';
+    this.copyThen(this.emailHtml(), this.plainText(), msg + warn, true);
   };
 
   copyCode = () => {
@@ -575,6 +580,8 @@ class Component extends DCLogic {
       pickOutlook: () => this.setState({ app: 'outlook', status: '' }),
       pickApple: () => this.setState({ app: 'apple', status: '' }),
       gmailLastNum: withPhoto ? '5' : '4',
+      outlookLastNum: withPhoto ? '5' : '4',
+      appleLastNum: withPhoto ? '6' : '5',
       copySignature: this.copySignature, copyCode: this.copyCode,
       copyIcon: s.copied ? 'ClipboardCheck' : 'ClipboardCopy',
       copyLabel: s.copied ? 'Kopierad' : 'Kopiera signaturen',
