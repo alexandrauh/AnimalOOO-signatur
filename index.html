@@ -231,6 +231,7 @@ const SAVED = ['name', 'title', 'phone', 'email', 'photoMode', 'photo', 'app'];
 const APPS = { 'Gmail': 'gmail', 'Outlook': 'outlook', 'Apple Mail': 'apple' };
 const INK = '#141414', SNOW = '#FFFCFC', WHITE = '#FFFFFF', CERISE = '#CD3A85';
 const PHOTO = 80, RING = 6;
+const DEFAULT_HOST = 'https://alexandrauh.github.io/AnimalOOO-signatur/email-assets';
 
 const CRC = (() => { const t = new Uint32Array(256); for (let n = 0; n < 256; n++) { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; } return t; })();
 function crc32(bytes) { let c = 0xFFFFFFFF; for (let i = 0; i < bytes.length; i++) c = CRC[(c ^ bytes[i]) & 0xFF] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; }
@@ -332,11 +333,9 @@ class Component extends DCLogic {
     return s || 'animal.ooo';
   }
 
-  assetUrl(file) {
-    const h = String(this.props.imageHost ?? '').trim();
-    if (h) return h.replace(/\/+$/, '') + '/' + file;
-    return new URL('email-assets/' + file, document.baseURI).href;
-  }
+  imageHost() { return (String(this.props.imageHost ?? '').trim() || DEFAULT_HOST).replace(/\/+$/, ''); }
+
+  assetUrl(file) { return this.imageHost() + '/' + file; }
 
   setStatus(status, statusKind) { this.setState({ status, statusKind, copied: false }); }
 
@@ -550,7 +549,7 @@ class Component extends DCLogic {
     if (err) return this.setStatus(err, 'error');
     const where = { gmail: 'Gmail', outlook: 'Outlook', apple: 'Mail' }[this.appKey()];
     const msg = this.state.photoMode === 'with' ? 'Kopierad. Följ stegen nedan för att klistra in den och lägga till ditt foto i ' + where + '.' : 'Kopierad. Klistra nu in den i ' + where + ' enligt stegen nedan.';
-    const hosted = String(this.props.imageHost ?? '').trim() || /(^|\.)github\.io$/i.test(location.hostname);
+    const hosted = !!this.imageHost();
     const warn = hosted ? '' : ' Obs! Bilderna syns bara i mejlen om du kopierar från den publicerade sidan.';
     this.copyThen(this.emailHtml(), this.plainText(), msg + warn, true);
   };
@@ -576,7 +575,7 @@ class Component extends DCLogic {
     const displayEmail = s.email.trim() || SAMPLE.email;
     return {
       headerProps: { style: { flexWrap: 'wrap', height: 'auto', minHeight: 48, rowGap: 12, columnGap: 24, color: CERISE } },
-      needsHost: !String(this.props.imageHost ?? '').trim() && !/(^|\.)github\.io$/i.test(location.hostname),
+      needsHost: !this.imageHost(),
       name: s.name, title: s.title, phone: s.phone, email: s.email, website: site,
       onName: set('name'), onTitle: set('title'), onPhone: set('phone'), onEmail: set('email'),
       displayName: s.name.trim() || SAMPLE.name,
