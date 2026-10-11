@@ -20,6 +20,7 @@
 body { margin: 0; background: #FBF8F7; }
 a { color: #A82F6D; }
 a:hover { color: #141414; }
+input::placeholder { color: #A3A7AE; opacity: 1; }
 [data-pick-photo] { background: #F1E7E3; }
 [data-pick-photo]:hover { background: #E9DAD4; }
 </style>
@@ -30,11 +31,11 @@ a:hover { color: #141414; }
 <x-import component-from-global-scope="AnimalOOODesignSystem_73413b.Header" breadcrumb="E-postsignatur" dc-props="{{ headerProps }}" hint-size="100%,48px"></x-import>
 
 <sc-if value="{{ needsHost }}" hint-placeholder-val="{{ false }}">
-<div style="margin-top: 32px; background: #F1E7E3; padding: 16px 20px; font-size: 15px; line-height: 1.5; text-wrap: pretty;"><strong style="font-weight: 700;">Innan du delar sidan:</strong> ladda upp mappen email-assets till er webbplats och skriv in dess webbadress under Tweaks (imageHost). Tills dess syns inte logotypen, djuren och ikonerna för dem som får dina mejl.</div>
+<div style="margin-top: 32px; background: #F1E7E3; border-radius: 8px; padding: 16px 20px; font-size: 15px; line-height: 1.5; text-wrap: pretty;"><strong style="font-weight: 700;">Innan du delar sidan:</strong> ladda upp mappen email-assets till er webbplats och skriv in dess webbadress under Tweaks (imageHost). Tills dess syns inte logotypen, djuren och ikonerna för dem som får dina mejl.</div>
 </sc-if>
 
 <sc-if value="{{ needsPhotoHost }}" hint-placeholder-val="{{ false }}">
-<div style="margin-top: 32px; background: #F1E7E3; padding: 16px 20px; font-size: 15px; line-height: 1.5; text-wrap: pretty;"><strong style="font-weight: 700;">Innan du delar sidan:</strong> fyll i Cloudinary-kontots namn och upload preset (PHOTO_CLOUD och PHOTO_PRESET längst upp i skriptet i index.html). Tills dess går det inte att lägga till foto i signaturen.</div>
+<div style="margin-top: 32px; background: #F1E7E3; border-radius: 8px; padding: 16px 20px; font-size: 15px; line-height: 1.5; text-wrap: pretty;"><strong style="font-weight: 700;">Innan du delar sidan:</strong> fyll i Cloudinary-kontots namn och upload preset (PHOTO_CLOUD och PHOTO_PRESET längst upp i skriptet i index.html). Tills dess går det inte att lägga till foto i signaturen.</div>
 </sc-if>
 
 <div style="margin-top: 64px; max-width: 640px;">
@@ -54,23 +55,23 @@ a:hover { color: #141414; }
 <div style="display: flex; flex-direction: column; gap: 20px;">
 <label style="display: flex; flex-direction: column; gap: 8px;">
 <span style="font-size: 15px; line-height: 1.2; font-weight: 600;">Namn</span>
-<input value="{{ name }}" onChange="{{ onName }}" placeholder="Anna Lindqvist" style="width: 100%; height: 48px; box-sizing: border-box; padding: 0 14px; font-family: inherit; font-size: 16px; font-weight: 500; color: #141414; background: #FFFFFF; border: 1px solid #C6ADA4; border-radius: 0; outline: none;" style-focus="border-color: #CD3A85; outline: 1px solid #CD3A85; outline-offset: -2px;">
+<input value="{{ name }}" onChange="{{ onName }}" placeholder="Anna Lindqvist" style="width: 100%; height: 48px; box-sizing: border-box; padding: 0 14px; font-family: inherit; font-size: 16px; font-weight: 500; color: #141414; background: #FFFFFF; border: 1px solid #D9C0B5; border-radius: 8px; outline: none;" style-focus="border-color: #CD3A85; outline: 1px solid #CD3A85; outline-offset: -2px;">
 </label>
 <label style="display: flex; flex-direction: column; gap: 8px;">
 <span style="font-size: 15px; line-height: 1.2; font-weight: 600;">Titel</span>
-<input value="{{ title }}" onChange="{{ onTitle }}" placeholder="Avelsgenetiker" style="width: 100%; height: 48px; box-sizing: border-box; padding: 0 14px; font-family: inherit; font-size: 16px; font-weight: 500; color: #141414; background: #FFFFFF; border: 1px solid #C6ADA4; border-radius: 0; outline: none;" style-focus="border-color: #CD3A85; outline: 1px solid #CD3A85; outline-offset: -2px;">
+<input value="{{ title }}" onChange="{{ onTitle }}" placeholder="Avelsgenetiker" style="width: 100%; height: 48px; box-sizing: border-box; padding: 0 14px; font-family: inherit; font-size: 16px; font-weight: 500; color: #141414; background: #FFFFFF; border: 1px solid #D9C0B5; border-radius: 8px; outline: none;" style-focus="border-color: #CD3A85; outline: 1px solid #CD3A85; outline-offset: -2px;">
 </label>
 <label style="display: flex; flex-direction: column; gap: 8px;">
 <span style="font-size: 15px; line-height: 1.2; font-weight: 600;">Telefon <span style="font-weight: 500; color: #7E5E53;">(valfritt)</span></span>
-<input value="{{ phone }}" onChange="{{ onPhone }}" placeholder="+46 70 123 45 67" inputmode="tel" style="width: 100%; height: 48px; box-sizing: border-box; padding: 0 14px; font-family: inherit; font-size: 16px; font-weight: 500; color: #141414; background: #FFFFFF; border: 1px solid #C6ADA4; border-radius: 0; outline: none;" style-focus="border-color: #CD3A85; outline: 1px solid #CD3A85; outline-offset: -2px;">
+<input value="{{ phone }}" onChange="{{ onPhone }}" placeholder="+46 70 123 45 67" inputmode="tel" style="width: 100%; height: 48px; box-sizing: border-box; padding: 0 14px; font-family: inherit; font-size: 16px; font-weight: 500; color: #141414; background: #FFFFFF; border: 1px solid #D9C0B5; border-radius: 8px; outline: none;" style-focus="border-color: #CD3A85; outline: 1px solid #CD3A85; outline-offset: -2px;">
 </label>
 <label style="display: flex; flex-direction: column; gap: 8px;">
 <span style="font-size: 15px; line-height: 1.2; font-weight: 600;">E-post</span>
-<input value="{{ email }}" onChange="{{ onEmail }}" placeholder="anna.lindqvist@animal.ooo" type="email" style="width: 100%; height: 48px; box-sizing: border-box; padding: 0 14px; font-family: inherit; font-size: 16px; font-weight: 500; color: #141414; background: #FFFFFF; border: 1px solid #C6ADA4; border-radius: 0; outline: none;" style-focus="border-color: #CD3A85; outline: 1px solid #CD3A85; outline-offset: -2px;">
+<input value="{{ email }}" onChange="{{ onEmail }}" placeholder="anna.lindqvist@animal.ooo" type="email" style="width: 100%; height: 48px; box-sizing: border-box; padding: 0 14px; font-family: inherit; font-size: 16px; font-weight: 500; color: #141414; background: #FFFFFF; border: 1px solid #D9C0B5; border-radius: 8px; outline: none;" style-focus="border-color: #CD3A85; outline: 1px solid #CD3A85; outline-offset: -2px;">
 </label>
 <div style="display: flex; flex-direction: column; gap: 8px;">
 <span style="font-size: 15px; line-height: 1.2; font-weight: 600;">Webbplats</span>
-<div style="min-height: 48px; box-sizing: border-box; padding: 12px 14px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 12px; background: #F1E7E3; font-size: 16px; line-height: 1.5;">
+<div style="min-height: 48px; box-sizing: border-box; padding: 12px 14px; border-radius: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 12px; background: #F1E7E3; font-size: 16px; line-height: 1.5;">
 <span>{{ website }}</span>
 <span style="font-size: 14px; color: #7E5E53;">Samma för alla</span>
 </div>
@@ -83,7 +84,7 @@ a:hover { color: #141414; }
 <span style="font-size: 24px; line-height: 1.2; font-weight: 400; color: #CD3A85;">02</span>
 <h2 style="margin: 0; font-size: 24px; line-height: 1.2; font-weight: 600; letter-spacing: -0.01em;">Profilbild</h2>
 </div>
-<div role="group" aria-label="Profilbild" style="display: flex; border: 1px solid #141414;">
+<div role="group" aria-label="Profilbild" style="display: flex; border: 1px solid #141414; border-radius: 8px; overflow: hidden;">
 <button type="button" onClick="{{ choosePhoto }}" aria-pressed="{{ withPhoto }}" style="flex: 1; height: 44px; border: 0; border-radius: 0; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; background: {{ photoOnBg }}; color: {{ photoOnFg }};">Med foto</button>
 <button type="button" onClick="{{ chooseNoPhoto }}" aria-pressed="{{ withoutPhoto }}" style="flex: 1; height: 44px; border: 0; border-left: 1px solid #141414; border-radius: 0; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; background: {{ photoOffBg }}; color: {{ photoOffFg }};">Utan foto</button>
 </div>
@@ -97,7 +98,7 @@ a:hover { color: #141414; }
 </sc-if>
 <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px;">
-<button type="button" onClick="{{ pickPhoto }}" style="height: 44px; padding: 0 18px; background: #FFFFFF; color: #141414; border: 1px solid #141414; border-radius: 0; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer;" style-hover="background: #F1E7E3;">{{ uploadLabel }}</button>
+<button type="button" onClick="{{ pickPhoto }}" style="height: 44px; padding: 0 18px; background: #FFFFFF; color: #141414; border: 1px solid #141414; border-radius: 8px; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer;" style-hover="background: #F1E7E3;">{{ uploadLabel }}</button>
 <sc-if value="{{ hasPhoto }}" hint-placeholder-val="{{ false }}">
 <button type="button" onClick="{{ removePhoto }}" style="padding: 0; background: none; border: 0; font-family: inherit; font-size: 15px; font-weight: 600; color: #A82F6D; text-decoration: underline; text-underline-offset: 3px; cursor: pointer;" style-hover="color: #141414;">Ta bort</button>
 </sc-if>
@@ -125,7 +126,7 @@ a:hover { color: #141414; }
 </div>
 <div style="display: flex; flex-direction: column; gap: 8px;">
 <span style="font-size: 15px; line-height: 1.2; font-weight: 600;">Vilket e-postprogram använder du?</span>
-<div role="group" aria-label="E-postprogram" style="display: flex; border: 1px solid #141414;">
+<div role="group" aria-label="E-postprogram" style="display: flex; border: 1px solid #141414; border-radius: 8px; overflow: hidden;">
 <button type="button" onClick="{{ pickGmail }}" aria-pressed="{{ isGmail }}" style="flex: 1; height: 44px; padding: 0 8px; border: 0; border-radius: 0; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; background: {{ gmailBg }}; color: {{ gmailFg }};">Gmail</button>
 <button type="button" onClick="{{ pickOutlook }}" aria-pressed="{{ isOutlook }}" style="flex: 1; height: 44px; padding: 0 8px; border: 0; border-left: 1px solid #141414; border-radius: 0; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; background: {{ outlookBg }}; color: {{ outlookFg }};">Outlook</button>
 <button type="button" onClick="{{ pickApple }}" aria-pressed="{{ isApple }}" style="flex: 1; height: 44px; padding: 0 8px; border: 0; border-left: 1px solid #141414; border-radius: 0; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; background: {{ appleBg }}; color: {{ appleFg }};">Apple Mail</button>
@@ -134,7 +135,7 @@ a:hover { color: #141414; }
 </div>
 
 <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 12px;">
-<button type="button" onClick="{{ copySignature }}" style="display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 24px; background: #CD3A85; color: #FFFCFC; border: 0; border-radius: 0; font-family: inherit; font-size: 16px; font-weight: 600; cursor: pointer;" style-hover="background: #A82F6D;" style-active="background: #A82F6D;">
+<button type="button" onClick="{{ copySignature }}" style="display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 24px; background: #CD3A85; color: #FFFCFC; border: 0; border-radius: 8px; font-family: inherit; font-size: 16px; font-weight: 600; cursor: pointer;" style-hover="background: #A82F6D;" style-active="background: #A82F6D;">
 <x-import component-from-global-scope="AnimalOOODesignSystem_73413b.Icon" name="{{ copyIcon }}" size="{{ 20 }}" color="#FFFCFC" hint-size="20px,20px"></x-import>
 <span>{{ copyLabel }}</span>
 </button>
@@ -179,7 +180,7 @@ a:hover { color: #141414; }
 </details>
 </sc-if>
 
-<div style="background: #F1E7E3; padding: 20px 24px; display: flex; flex-direction: column; gap: 6px;">
+<div style="background: #F1E7E3; border-radius: 8px; padding: 20px 24px; display: flex; flex-direction: column; gap: 6px;">
 <span style="font-size: 16px; line-height: 1.5; font-weight: 700;">Hur ändrar jag mina uppgifter senare?</span>
 <span style="font-size: 15px; line-height: 1.5; text-wrap: pretty;">Fyll i sidan igen, kopiera och klistra in över den gamla signaturen (markera allt med <strong style="font-weight: 700;">{{ selectAllKeys }}</strong> först).</span>
 <div style="display: flex; gap: 10px; align-items: flex-start; margin-top: 6px;"><span aria-hidden="true" style="flex-shrink: 0; width: 18px; height: 18px; margin-top: 2px; border-radius: 50%; background: #A82F6D; color: #FFFCFC; font-size: 12px; line-height: 18px; font-weight: 700; text-align: center;">!</span><span style="flex: 1 1 auto; min-width: 0; font-size: 15px; line-height: 1.5; text-wrap: pretty;">Ändra inte telefon eller e-post direkt i e-postprogrammet, då pekar länkarna kvar på de gamla uppgifterna.</span></div>
@@ -197,7 +198,7 @@ a:hover { color: #141414; }
 <span style="font-size: 15px; line-height: 1.2; font-weight: 600;">Förhandsvisning</span>
 <span style="font-size: 14px; line-height: 1.2; color: #7E5E53;">Verklig storlek</span>
 </div>
-<div style="background: #FFFFFF; padding: 48px clamp(20px, 4vw, 48px); overflow-x: auto;">
+<div style="background: #FFFFFF; border-radius: 8px; padding: 48px clamp(20px, 4vw, 48px); overflow-x: auto;">
 <div ref="{{ sigRef }}" onClick="{{ onPreviewClick }}"></div>
 </div>
 <p style="margin: 4px 0 0; font-size: 14px; line-height: 1.5; color: #7E5E53; text-wrap: pretty;">Mottagare som saknar typsnittet Plus Jakarta Sans ser Arial i stället.</p>
@@ -258,9 +259,9 @@ function signatureHtml(d) {
   rows.push(`<tr><td style="padding:0; ${text(24, 30, 700, INK)} letter-spacing:-0.01em;">${esc(d.name)}</td></tr>`);
   rows.push(`<tr><td style="padding:0 0 16px 0; ${text(14, 20, 600, CERISE)}">${esc(d.title)}</td></tr>`);
   const contacts = [];
-  if (d.phone) contacts.push(contact('icon-phone-v2.png', 'Telefon', 'tel:' + telNumber(d.phone), d.phone));
-  contacts.push(contact('icon-mail-v2.png', 'E-post', 'mailto:' + d.email, d.email));
-  contacts.push(contact('icon-web-v2.png', 'Webb', 'https://' + d.site, d.site));
+  if (d.phone) contacts.push(contact('icon-phone-v3.png', 'Telefon', 'tel:' + telNumber(d.phone), d.phone));
+  contacts.push(contact('icon-mail-v3.png', 'E-post', 'mailto:' + d.email, d.email));
+  contacts.push(contact('icon-web-v3.png', 'Webb', 'https://' + d.site, d.site));
   rows.push(`<tr><td style="padding:0 0 24px 0;"><table ${T} style="border-collapse:collapse;">${contacts.join('')}</table></td></tr>`);
 
   // Spacing lives in table cells (Outlook ignores padding on divs); the 28px gutter only matters side by side.
